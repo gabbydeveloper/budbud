@@ -1,0 +1,18 @@
+{
+    "type": "Ext.app.ViewController",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userAlias": "pnlcomparacion",
+        "designer|userClassName": "pnlVistaGeneralViewController5"
+    },
+    "configAlternates": {
+        "designer|userAlias": "string",
+        "designer|userClassName": "string"
+    },
+    "name": "pnlVistaGeneralViewController5",
+    "designerId": "ac7aed70-c289-4313-9342-370aa7dd8d7c"
+}

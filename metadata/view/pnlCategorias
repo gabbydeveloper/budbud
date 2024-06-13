@@ -1,0 +1,219 @@
+{
+    "type": "Ext.panel.Panel",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userAlias": "pnlcategorias",
+        "designer|userClassName": "pnlCategorias",
+        "height": 627,
+        "id": "pnlCategorias",
+        "layout": "fit",
+        "width": 994
+    },
+    "configAlternates": {
+        "designer|userAlias": "string",
+        "designer|userClassName": "string",
+        "height": "auto",
+        "id": "string",
+        "title": "string",
+        "width": "auto",
+        "layout": "string"
+    },
+    "name": "pnlProgreso1",
+    "designerId": "dc49ec01-b39d-488f-bc6f-25d9b4d5bc68",
+    "viewControllerInstanceId": "9b301401-1545-4545-b883-6fe8c1324514",
+    "viewModelInstanceId": "7324ac03-981c-43e7-9ce9-b56d376f72be",
+    "cn": [
+        {
+            "type": "Ext.grid.Panel",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "columnLines": true,
+                "id": "grdCategorias",
+                "store": "categoriasStore",
+                "title": "Categorías"
+            },
+            "configAlternates": {
+                "id": "string",
+                "store": "store",
+                "title": "string",
+                "columnLines": "boolean"
+            },
+            "name": "MyGridPanel",
+            "designerId": "7521e9cd-8987-4978-985e-7cc438d1ea22",
+            "cn": [
+                {
+                    "type": "Ext.toolbar.Toolbar",
+                    "reference": {
+                        "name": "dockedItems",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "dock": "top"
+                    },
+                    "configAlternates": {
+                        "dock": "string"
+                    },
+                    "name": "MyToolbar1",
+                    "designerId": "7c217098-078b-4d94-85ad-0bca92d60ad0",
+                    "cn": [
+                        {
+                            "type": "Ext.button.Button",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "iconCls": "x-fa fa-plus",
+                                "layout|flex": null,
+                                "text": "Insertar"
+                            },
+                            "configAlternates": {
+                                "iconCls": "string",
+                                "layout|flex": "number",
+                                "text": "string"
+                            },
+                            "name": "MyButton3",
+                            "designerId": "c13f5b49-09b1-4c3a-8b7e-7f9a314d3649"
+                        },
+                        {
+                            "type": "Ext.button.Button",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "iconCls": "x-fa fa-minus",
+                                "layout|flex": null,
+                                "text": "Eliminar"
+                            },
+                            "configAlternates": {
+                                "iconCls": "string",
+                                "layout|flex": "number",
+                                "text": "string"
+                            },
+                            "name": "MyButton4",
+                            "designerId": "5c4d72af-7f67-404f-ab8f-6e45c3ed4e46"
+                        }
+                    ]
+                },
+                {
+                    "type": "Ext.grid.column.Column",
+                    "reference": {
+                        "name": "columns",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "dataIndex": "tipo_ingreso_gasto_meta",
+                        "text": "Tipo",
+                        "width": "25%"
+                    },
+                    "configAlternates": {
+                        "dataIndex": "datafield",
+                        "text": "string",
+                        "width": "auto"
+                    },
+                    "name": "MyColumn",
+                    "designerId": "69645f5c-4aa6-4ace-8204-7a5ce880eecb",
+                    "cn": [
+                        {
+                            "type": "fixedfunction",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "designer|params": [
+                                    "value",
+                                    "metaData",
+                                    "record",
+                                    "rowIndex",
+                                    "colIndex",
+                                    "store",
+                                    "view"
+                                ],
+                                "fn": "renderer",
+                                "implHandler": [
+                                    "return (value === 'I' ? 'Ingreso' : (value === 'G' ? 'Gasto' : 'Meta'));"
+                                ]
+                            },
+                            "configAlternates": {
+                                "designer|params": "typedarray",
+                                "fn": "string",
+                                "implHandler": "code"
+                            },
+                            "name": "renderer",
+                            "designerId": "8d052dc0-9174-4304-9dc3-53133119fc73"
+                        }
+                    ]
+                },
+                {
+                    "type": "Ext.grid.column.Column",
+                    "reference": {
+                        "name": "columns",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "dataIndex": "nombre_tipo_ingreso_gasto_meta",
+                        "text": "Descripción",
+                        "width": "75%"
+                    },
+                    "configAlternates": {
+                        "dataIndex": "datafield",
+                        "text": "string",
+                        "width": "auto"
+                    },
+                    "name": "MyColumn1",
+                    "designerId": "951e6212-7321-4f41-89a8-be755a7347c8"
+                },
+                {
+                    "type": "Ext.view.Table",
+                    "reference": {
+                        "name": "viewConfig",
+                        "type": "object"
+                    },
+                    "codeClass": null,
+                    "name": "MyTable",
+                    "designerId": "f5d03701-d8e2-4b77-8e7f-4eb88ffa8b7a"
+                }
+            ]
+        },
+        {
+            "type": "viewcontrollereventbinding",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "onPnlCategoriasAfterRender",
+                "implHandler": [
+                    "Bud.controller.Funciones.loadStore('categoriasStore', 'tipos', {tipo: 'M'});"
+                ],
+                "name": "afterrender",
+                "scope": "me"
+            },
+            "configAlternates": {
+                "fn": "string",
+                "implHandler": "code",
+                "name": "string",
+                "scope": "string"
+            },
+            "name": "onPnlCategoriasAfterRender",
+            "designerId": "d05993e4-8fb4-457a-a506-d68affe0a5eb"
+        }
+    ]
+}

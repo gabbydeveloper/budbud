@@ -1,0 +1,181 @@
+{
+    "type": "Ext.window.Window",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "autoShow": true,
+        "closable": false,
+        "container|align": "stretch",
+        "designer|userAlias": "winlogin",
+        "designer|userClassName": "winLogin",
+        "draggable": false,
+        "height": 249,
+        "id": "winLogin",
+        "layout": "vbox",
+        "modal": true,
+        "resizable": false,
+        "width": 358
+    },
+    "configAlternates": {
+        "autoShow": "boolean",
+        "closable": "boolean",
+        "container|align": "string",
+        "designer|userAlias": "string",
+        "designer|userClassName": "string",
+        "draggable": "boolean",
+        "height": "auto",
+        "id": "string",
+        "layout": "string",
+        "modal": "boolean",
+        "resizable": "boolean",
+        "width": "auto"
+    },
+    "name": "MyWindow",
+    "designerId": "4e09dc43-16e9-4d0a-be47-f891e51e2df2",
+    "viewControllerInstanceId": "eec11e9e-5178-46b2-b1e6-de881ac54591",
+    "viewModelInstanceId": "e68218e8-9de4-425b-aed5-68191a161fb0",
+    "cn": [
+        {
+            "type": "Ext.Component",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "height": 85,
+                "html": "<div align=\"center\"><img src=\"assets/img/logo.jpg\" alt=\"logo\" height=\"80\"></div>",
+                "style": "background-color:#025197;"
+            },
+            "configAlternates": {
+                "height": "auto",
+                "html": "string",
+                "style": "string"
+            },
+            "name": "MyComponent1",
+            "designerId": "3d0ac9d3-1ee0-42a3-bcfb-bc48374d7f1b"
+        },
+        {
+            "type": "Ext.form.Panel",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "bodyPadding": 10
+            },
+            "configAlternates": {
+                "bodyPadding": "auto"
+            },
+            "name": "MyForm",
+            "designerId": "e92bd460-234b-491b-9059-da6b85337983",
+            "cn": [
+                {
+                    "type": "Ext.form.field.Text",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "allowBlank": false,
+                        "emptyText": "Usuario",
+                        "layout|anchor": "100%"
+                    },
+                    "configAlternates": {
+                        "allowBlank": "boolean",
+                        "emptyText": "string",
+                        "layout|anchor": "string"
+                    },
+                    "name": "MyTextField",
+                    "designerId": "7ce603f5-b647-44b6-b7f0-2e727dfd375e"
+                },
+                {
+                    "type": "Ext.form.field.Text",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "allowBlank": false,
+                        "emptyText": "Clave",
+                        "layout|anchor": "100%"
+                    },
+                    "configAlternates": {
+                        "allowBlank": "boolean",
+                        "emptyText": "string",
+                        "layout|anchor": "string"
+                    },
+                    "name": "MyTextField1",
+                    "designerId": "d9ded464-b3e2-4cb6-8c3e-5cb1cff53b77"
+                },
+                {
+                    "type": "Ext.container.Container",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "layout": "fit"
+                    },
+                    "configAlternates": {
+                        "layout": "string"
+                    },
+                    "name": "MyContainer2",
+                    "designerId": "18b73d72-3621-486e-8a4c-79808a7a44f7",
+                    "cn": [
+                        {
+                            "type": "Ext.button.Button",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "text": "Ingresar"
+                            },
+                            "configAlternates": {
+                                "text": "string"
+                            },
+                            "name": "MyButton2",
+                            "designerId": "6018e1b3-0cdb-40e1-9c5c-74a631b7de1d",
+                            "cn": [
+                                {
+                                    "type": "viewcontrollereventbinding",
+                                    "reference": {
+                                        "name": "listeners",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "fn": "onBtnIngresarClick",
+                                        "implHandler": [
+                                            "Ext.create('Bud.view.vpMain');",
+                                            "Ext.getCmp('winLogin').destroy();"
+                                        ],
+                                        "name": "click",
+                                        "scope": "me"
+                                    },
+                                    "configAlternates": {
+                                        "fn": "string",
+                                        "implHandler": "code",
+                                        "name": "string",
+                                        "scope": "string"
+                                    },
+                                    "name": "onBtnIngresarClick",
+                                    "designerId": "4f66de4a-a5ca-4b57-91ea-d1991e377a17"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

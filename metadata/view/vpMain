@@ -1,0 +1,381 @@
+{
+    "type": "Ext.container.Viewport",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "container|align": "stretch",
+        "designer|userAlias": "vpmain",
+        "designer|userClassName": "vpMain",
+        "height": 250,
+        "id": "vpMain",
+        "layout": "vbox",
+        "responsiveFormulas": [
+            "{",
+            "  large: 'width > 1360',",
+            "  medium: 'width > 990 && width <= 1360',",
+            "  small: 'width > 768 && width <= 990',",
+            "  xsmall: 'width <= 768'",
+            "}"
+        ],
+        "width": 400
+    },
+    "configAlternates": {
+        "container|align": "string",
+        "designer|initialView": "boolean",
+        "designer|userAlias": "string",
+        "designer|userClassName": "string",
+        "height": "auto",
+        "layout": "string",
+        "responsiveFormulas": "object",
+        "width": "auto",
+        "id": "string"
+    },
+    "name": "MyViewport",
+    "designerId": "14ee59ce-d338-4c67-b4ac-76c09ab4f6a7",
+    "viewControllerInstanceId": "d8a1e663-be98-4ffa-8014-99c4ed415258",
+    "viewModelInstanceId": "7ad8f944-7052-4b8c-a09c-96eabfa782c8",
+    "cn": [
+        {
+            "type": "Ext.toolbar.Toolbar",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "height": 60,
+                "padding": 0
+            },
+            "configAlternates": {
+                "height": "auto",
+                "padding": "auto"
+            },
+            "name": "MyToolbar",
+            "designerId": "5304530a-759a-45e2-ac34-8b618f89dd51",
+            "cn": [
+                {
+                    "type": "Ext.Component",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "cls": [
+                            "txtCabecera"
+                        ],
+                        "html": "<img src=\"assets/img/logo.jpg\">",
+                        "id": "cmpHeader",
+                        "layout|flex": null,
+                        "responsiveConfig": [
+                            "{",
+                            "  xsmall: {",
+                            "    width: 50,",
+                            "    html: '<img src=\"assets/img/logo_solo_bud.jpg\">'",
+                            "  },",
+                            "  small: {",
+                            "    width: 50,",
+                            "    html: '<img src=\"assets/img/logo_solo_bud.jpg\">'",
+                            "  },",
+                            "  medium: {",
+                            "    width: 190,",
+                            "    html: '<img src=\"assets/img/logo.jpg\">'",
+                            "  },",
+                            "  large: {",
+                            "    width: 195,",
+                            "    html: '<img src=\"assets/img/logo.jpg\">'",
+                            "  }",
+                            "}"
+                        ],
+                        "style": "background-color: #025197;",
+                        "width": 195
+                    },
+                    "configAlternates": {
+                        "cls": "typedarray",
+                        "html": "string",
+                        "id": "string",
+                        "layout|flex": "number",
+                        "responsiveConfig": "object",
+                        "style": "string",
+                        "width": "auto"
+                    },
+                    "name": "MyComponent",
+                    "designerId": "1f470a3e-0f13-47b3-9fac-5c84b4ed4baf"
+                },
+                {
+                    "type": "Ext.button.Button",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "iconCls": "x-fa fa-bars",
+                        "layout|flex": null
+                    },
+                    "configAlternates": {
+                        "iconCls": "string",
+                        "layout|flex": "number"
+                    },
+                    "name": "MyButton",
+                    "designerId": "d9aeae5b-1017-4405-9c06-ff12dcfae4b3",
+                    "cn": [
+                        {
+                            "type": "viewcontrollereventbinding",
+                            "reference": {
+                                "name": "listeners",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "fn": "onBtnToggle",
+                                "implHandler": [
+                                    "menu = Ext.getCmp('tlMenu');",
+                                    "if (menu.getMicro())",
+                                    "{",
+                                    "  menu.setMicro(false);",
+                                    "  menu.setWidth(195);",
+                                    "  Ext.getCmp('cmpHeader').setWidth(195);",
+                                    "  Ext.getCmp('cmpHeader').setHtml('<img src=\"assets/img/logo.jpg\">');",
+                                    "}",
+                                    "else",
+                                    "{",
+                                    "  menu.setMicro(true);",
+                                    "  menu.setWidth(50);",
+                                    "  Ext.getCmp('cmpHeader').setWidth(50);",
+                                    "  Ext.getCmp('cmpHeader').setHtml('<img src=\"assets/img/logo_solo_bud.jpg\">');",
+                                    "}"
+                                ],
+                                "name": "click",
+                                "scope": "me"
+                            },
+                            "configAlternates": {
+                                "fn": "string",
+                                "implHandler": "code",
+                                "name": "string",
+                                "scope": "string"
+                            },
+                            "name": "onBtnToggle",
+                            "designerId": "6561a237-20fe-494f-a727-c2c1813b4184"
+                        }
+                    ]
+                },
+                {
+                    "type": "Ext.toolbar.Fill",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "layout|flex": null
+                    },
+                    "configAlternates": {
+                        "layout|flex": "number"
+                    },
+                    "name": "MyFill",
+                    "designerId": "21c3b13d-02ca-4e3f-9991-c0ca5f9bfd16"
+                },
+                {
+                    "type": "Ext.button.Button",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "iconCls": "x-fa fa-times-circle",
+                        "layout|flex": null,
+                        "responsiveConfig": [
+                            "{",
+                            "  xsmall: {",
+                            "    text: ''",
+                            "  },",
+                            "  small: {",
+                            "    text: ''",
+                            "  },",
+                            "  medium: {",
+                            "    text: 'Salir'",
+                            "  },",
+                            "  large: {",
+                            "    text: 'Salir'",
+                            "  }",
+                            "}"
+                        ],
+                        "text": "Salir"
+                    },
+                    "configAlternates": {
+                        "iconCls": "string",
+                        "layout|flex": "number",
+                        "responsiveConfig": "object",
+                        "text": "string"
+                    },
+                    "name": "MyButton1",
+                    "designerId": "44abd324-ca52-49ce-abc6-7d414cf41780",
+                    "cn": [
+                        {
+                            "type": "viewcontrollereventbinding",
+                            "reference": {
+                                "name": "listeners",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "fn": "onBtnSalirClick",
+                                "implHandler": [
+                                    "Ext.create('Bud.view.winLogin');",
+                                    "Ext.getCmp('vpMain').destroy();"
+                                ],
+                                "name": "click",
+                                "scope": "me"
+                            },
+                            "configAlternates": {
+                                "fn": "string",
+                                "implHandler": "code",
+                                "name": "string",
+                                "scope": "string"
+                            },
+                            "name": "onBtnSalirClick",
+                            "designerId": "e9eb1872-5ff5-4f13-aaa3-dc525394397f"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "type": "Ext.container.Container",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "container|align": "stretch",
+                "layout": "hbox",
+                "layout|flex": 1
+            },
+            "configAlternates": {
+                "container|align": "string",
+                "layout": "string",
+                "layout|flex": "number"
+            },
+            "name": "MyContainer",
+            "designerId": "1a957346-6629-4113-b3b9-00828111409f",
+            "cn": [
+                {
+                    "type": "Ext.list.Tree",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "designer|uiInterfaceName": "nav",
+                        "expanderFirst": false,
+                        "expanderOnly": false,
+                        "id": "tlMenu",
+                        "store": "menuStore",
+                        "ui": [
+                            "nav"
+                        ],
+                        "width": 195
+                    },
+                    "configAlternates": {
+                        "designer|uiInterfaceName": "string",
+                        "expanderFirst": "boolean",
+                        "expanderOnly": "boolean",
+                        "id": "string",
+                        "store": "store",
+                        "ui": "typedarray",
+                        "width": "auto"
+                    },
+                    "name": "MyTreeList",
+                    "designerId": "4c7f7414-6acb-4447-9f81-75a628caec81",
+                    "customConfigs": [
+                        {
+                            "group": "(Custom Properties)",
+                            "name": "id",
+                            "type": "string"
+                        }
+                    ],
+                    "cn": [
+                        {
+                            "type": "viewcontrollereventbinding",
+                            "reference": {
+                                "name": "listeners",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "fn": "onTlMenuSelectionChange",
+                                "implHandler": [
+                                    "if(record.data.itemId)",
+                                    "{",
+                                    "  Bud.controller.Funciones.openPanel(record.data.itemId);",
+                                    "}"
+                                ],
+                                "name": "selectionchange",
+                                "scope": "me"
+                            },
+                            "configAlternates": {
+                                "fn": "string",
+                                "implHandler": "code",
+                                "name": "string",
+                                "scope": "string"
+                            },
+                            "name": "onTlMenuSelectionChange",
+                            "designerId": "8809107d-0fad-4eab-a6ac-8ae4d4430d7c"
+                        }
+                    ]
+                },
+                {
+                    "type": "Ext.container.Container",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "id": "cntCentral",
+                        "layout": "fit",
+                        "layout|flex": 1
+                    },
+                    "configAlternates": {
+                        "layout|flex": "number",
+                        "id": "string",
+                        "layout": "string"
+                    },
+                    "name": "MyContainer1",
+                    "designerId": "6f2757e5-6c38-4387-bf4d-6f3e916fe6b8"
+                }
+            ]
+        },
+        {
+            "type": "viewcontrollereventbinding",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "onVpMainAfterRender",
+                "implHandler": [
+                    "Bud.controller.Funciones.openPanel('pnlVistaGeneral');"
+                ],
+                "name": "afterrender",
+                "scope": "me"
+            },
+            "configAlternates": {
+                "fn": "string",
+                "implHandler": "code",
+                "name": "string",
+                "scope": "string"
+            },
+            "name": "onVpMainAfterRender",
+            "designerId": "f78488b7-51a0-4d4f-b879-0351549ddfa2"
+        }
+    ]
+}

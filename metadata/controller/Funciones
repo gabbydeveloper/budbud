@@ -1,0 +1,117 @@
+{
+    "type": "class",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userClassName": "Funciones",
+        "singleton": true
+    },
+    "configAlternates": {
+        "designer|userClassName": "string",
+        "singleton": "boolean"
+    },
+    "name": "MyClass",
+    "designerId": "eabac001-0054-4777-998b-66ed76aecf72",
+    "cn": [
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "obj"
+                ],
+                "fn": "openPanel",
+                "implHandler": [
+                    "if(obj !== 'exit')",
+                    "{",
+                    "  let object = Ext.getCmp(obj);",
+                    "  let central = Ext.getCmp('cntCentral');",
+                    "  if(!object)",
+                    "  {",
+                    "    central.removeAll();",
+                    "    panel = Ext.create('Bud.view.' + obj);",
+                    "    central.add(panel);",
+                    "    panel.show();",
+                    "  }",
+                    "  else",
+                    "  {",
+                    "    Ext.Msg.alert('Atención', 'Esta opción está abierta');",
+                    "  }",
+                    "}",
+                    "else",
+                    "{",
+                    "  Ext.create('Bud.view.winLogin');",
+                    "  Ext.getCmp('vpMain').destroy();",
+                    "}"
+                ]
+            },
+            "configAlternates": {
+                "designer|params": "typedarray",
+                "fn": "string",
+                "implHandler": "code"
+            },
+            "name": "openPanel",
+            "designerId": "eaf4d9ae-41ef-43ac-8573-62ff9f56f399"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "name",
+                    "endPoint",
+                    "extraParams"
+                ],
+                "fn": "loadStore",
+                "implHandler": [
+                    "",
+                    "const store = Ext.data.StoreManager.lookup(name);",
+                    "const baseUrl = CONFIG.apiUrl + endPoint;",
+                    "const user = CONFIG.user;",
+                    "const pass = CONFIG.pass;",
+                    "let params = {usuario: IDUSER};",
+                    "",
+                    "const base64Credentials = btoa(user+':'+pass);",
+                    "",
+                    "store.proxy.setConfig('url', baseUrl);",
+                    "store.proxy.setConfig('headers', {",
+                    "  'Authorization': 'Basic ' + base64Credentials",
+                    "});",
+                    "",
+                    "",
+                    "",
+                    "if(extraParams)",
+                    "{",
+                    "  for (let key in extraParams) {",
+                    "    if (extraParams.hasOwnProperty(key)) {",
+                    "      params[key] = extraParams[key];",
+                    "    }",
+                    "  }",
+                    "}",
+                    "",
+                    "store.proxy.extraParams = params;",
+                    "",
+                    "store.load();"
+                ]
+            },
+            "configAlternates": {
+                "designer|params": "typedarray",
+                "fn": "string",
+                "implHandler": "code"
+            },
+            "name": "loadStore",
+            "designerId": "8a0485c1-0f3e-4f33-ba43-8b89c0f8b869"
+        }
+    ]
+}

@@ -1,0 +1,18 @@
+{
+    "type": "Ext.app.ViewController",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userAlias": "pnldetallepresupuesto",
+        "designer|userClassName": "pnlVistaGeneralViewController4"
+    },
+    "configAlternates": {
+        "designer|userAlias": "string",
+        "designer|userClassName": "string"
+    },
+    "name": "pnlVistaGeneralViewController4",
+    "designerId": "f4e7e38b-6a9c-44e9-afcf-348663ca23d6"
+}

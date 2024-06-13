@@ -1,0 +1,90 @@
+{
+    "name": "budbud",
+    "settings": {
+        "cmd": {
+            "license": "commercial",
+            "cmdVersion": "7.3.0.19",
+            "frameworkVersion": "7.3.0.55"
+        },
+        "urlPrefixTemplate": "http://localhost:{port}/{path}",
+        "urlPrefix": "http://localhost:61106/",
+        "canvasControls": {
+            "viewportSize": {
+                "name": "Auto Expand",
+                "builtIn": true,
+                "height": null,
+                "width": null
+            }
+        },
+        "exportPath": "",
+        "spacesToIndent": 2,
+        "sdkPath": "",
+        "lineEnding": "CRLF",
+        "genTimestamps": false,
+        "cacheBust": false,
+        "buildShouldOverwriteIndex": false,
+        "generateArchitectVersion": true,
+        "installStatus": "Not Installed"
+    },
+    "xdsVersion": "4.2.9",
+    "xdsBuild": 443,
+    "schemaVersion": 1,
+    "upgradeVersion": 310000000001,
+    "framework": "ext73",
+    "viewOrderMap": {
+        "view": [
+            "14ee59ce-d338-4c67-b4ac-76c09ab4f6a7",
+            "7ad8f944-7052-4b8c-a09c-96eabfa782c8",
+            "d8a1e663-be98-4ffa-8014-99c4ed415258",
+            "4e09dc43-16e9-4d0a-be47-f891e51e2df2",
+            "e68218e8-9de4-425b-aed5-68191a161fb0",
+            "eec11e9e-5178-46b2-b1e6-de881ac54591",
+            "f3d7ec5d-d350-48fd-ade2-cf0e1bb1d6b4",
+            "ac554ffd-c8af-4e14-a1b9-2fd87df08ea5",
+            "4e85c477-8c4f-4be1-bbf6-16761f6e8962",
+            "dc49ec01-b39d-488f-bc6f-25d9b4d5bc68",
+            "0487736d-446f-4ce6-b2b8-41cc3b19432c",
+            "de126ca9-3e2e-46c5-bb3e-b812771a5552",
+            "c8091c5d-971f-44a6-80eb-75b8c7331fc6",
+            "9ca5ca93-8b28-4639-918e-f86807b95ac9",
+            "f333bad5-41fe-44be-ab5e-dc6994417f6e",
+            "1114cb49-6f6f-4c3d-b440-ba412bbd0ea4",
+            "36322533-c9a8-4d81-a3f4-ea023ab3f1c1",
+            "ac65222b-5638-4720-baac-90ffe6424727",
+            "7324ac03-981c-43e7-9ce9-b56d376f72be",
+            "f795d129-0341-43d5-aa56-4ac9f623b8e8",
+            "188ce29c-8bb8-4911-ac93-0bee64f2144f",
+            "c4b1f0a0-4383-4bcb-a3b5-d422000218db",
+            "772fc507-27a1-467d-be6c-7c6a950ad968",
+            "2f548688-8a45-49ea-84fe-e52999a6b541",
+            "23462cca-e593-4f2d-9faf-10ac908bc592",
+            "9fad4d00-3d28-4f4a-aff6-4afa8d38a124",
+            "dcc7fd9b-63d5-4f01-bdf2-ebe8328f415c",
+            "9b301401-1545-4545-b883-6fe8c1324514",
+            "fe2e4aa0-d98b-4a7c-9886-cf970feb2a5d",
+            "86a1a114-c064-4cce-81ba-bdc3bce2976b",
+            "a9137003-fe15-4cc3-a872-3cc706673c1d",
+            "ac7aed70-c289-4313-9342-370aa7dd8d7c",
+            "f4e7e38b-6a9c-44e9-afcf-348663ca23d6"
+        ],
+        "store": [
+            "7b602fb9-50c4-4bc8-b322-a3a7e1728051",
+            "d82a54ec-a86d-416b-9026-ceb8e57d32be"
+        ],
+        "controller": [
+            "eabac001-0054-4777-998b-66ed76aecf72"
+        ],
+        "model": [
+            "981af305-8da3-4bd8-873a-8c64fcfc31b2"
+        ],
+        "resource": [
+            "9d45e244-93c8-4d65-a46c-3502b334c5bd",
+            "ac60db15-b88d-480b-ab53-e0f31c7c8011",
+            "5e552297-c306-4908-aa0e-519226fadd56",
+            "5ce203f0-138b-45d0-b21e-058f7c026128"
+        ],
+        "app": [
+            "application"
+        ]
+    }
+}

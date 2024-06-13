@@ -1,0 +1,28 @@
+{
+    "type": "Ext.panel.Panel",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userAlias": "pnltendencias",
+        "designer|userClassName": "pnlTendencias",
+        "height": 627,
+        "id": "pnlTendencias",
+        "title": "Tendencias",
+        "width": 994
+    },
+    "configAlternates": {
+        "designer|userAlias": "string",
+        "designer|userClassName": "string",
+        "height": "auto",
+        "id": "string",
+        "title": "string",
+        "width": "auto"
+    },
+    "name": "pnlVistaGeneral1",
+    "designerId": "ac554ffd-c8af-4e14-a1b9-2fd87df08ea5",
+    "viewControllerInstanceId": "9fad4d00-3d28-4f4a-aff6-4afa8d38a124",
+    "viewModelInstanceId": "36322533-c9a8-4d81-a3f4-ea023ab3f1c1"
+}

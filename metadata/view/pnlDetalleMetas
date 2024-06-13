@@ -1,0 +1,28 @@
+{
+    "type": "Ext.panel.Panel",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userAlias": "pnldetallemetas",
+        "designer|userClassName": "pnlDetalleMetas",
+        "height": 627,
+        "id": "pnlDetalleMetas",
+        "title": "Detalle de metas",
+        "width": 994
+    },
+    "configAlternates": {
+        "designer|userAlias": "string",
+        "designer|userClassName": "string",
+        "height": "auto",
+        "id": "string",
+        "title": "string",
+        "width": "auto"
+    },
+    "name": "pnlTendencias2",
+    "designerId": "0487736d-446f-4ce6-b2b8-41cc3b19432c",
+    "viewControllerInstanceId": "fe2e4aa0-d98b-4a7c-9886-cf970feb2a5d",
+    "viewModelInstanceId": "f795d129-0341-43d5-aa56-4ac9f623b8e8"
+}

@@ -1,0 +1,100 @@
+{
+    "type": "Ext.app.Application",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "models": [
+            "categoriasModel"
+        ],
+        "name": "Bud",
+        "stores": [
+            "menuStore",
+            "categoriasStore"
+        ],
+        "views": [
+            "vpMain",
+            "winLogin",
+            "pnlVistaGeneral",
+            "pnlTendencias",
+            "pnlDetalleIngresos",
+            "pnlDetalleGastos",
+            "pnlDetallePresupuesto",
+            "pnlComparacion",
+            "pnlDetalleMetas",
+            "pnlProgreso",
+            "pnlCategorias"
+        ]
+    },
+    "configAlternates": {
+        "name": "string",
+        "stores": "typedarray",
+        "views": "typedarray",
+        "models": "typedarray"
+    },
+    "name": "Application",
+    "designerId": "application",
+    "cn": [
+        {
+            "type": "fixedfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "launch",
+                "implHandler": [
+                    "const url = window.location.href;",
+                    "let env = '';",
+                    "CONFIG = null;",
+                    "",
+                    "if(url.indexOf('localhost') !== -1)",
+                    "  env = 'dev';",
+                    "else",
+                    "{",
+                    "  if(url.indexOf('test') !== -1)",
+                    "    env = 'test';",
+                    "  else",
+                    "    env = 'prod';",
+                    "}",
+                    "",
+                    "if(env !== '')",
+                    "{",
+                    "  Ext.Ajax.request({",
+                    "    url: 'assets/json/config.' + env + '.json',",
+                    "    success: function(response) {",
+                    "      CONFIG = Ext.decode(response.responseText);",
+                    "      var storage = Ext.util.LocalStorage.get('main');",
+                    "      var token = storage.getItem('token');",
+                    "",
+                    "      IDUSER = 1;",
+                    "",
+                    "      if(token === null)",
+                    "      {",
+                    "        storage.setItem('token', '145778sf4ioif');",
+                    "        token = storage.getItem('token');",
+                    "      }",
+                    "",
+                    "      //console.log(token);",
+                    "      //console.log(storage);",
+                    "      Ext.create('Bud.view.winLogin');",
+                    "    },",
+                    "    failure: function() {",
+                    "      Ext.Msg.alert('Error', 'No se pudo cargar el archivo de configuración.');",
+                    "    }",
+                    "  });",
+                    "}"
+                ]
+            },
+            "configAlternates": {
+                "fn": "string",
+                "implHandler": "code"
+            },
+            "name": "launch",
+            "designerId": "97d26b36-7953-499d-b453-ede1e0db6549"
+        }
+    ]
+}

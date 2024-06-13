@@ -1,0 +1,28 @@
+{
+    "type": "Ext.panel.Panel",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userAlias": "pnldetallegastos",
+        "designer|userClassName": "pnlDetalleGastos",
+        "height": 627,
+        "id": "pnlDetalleGastos",
+        "title": "Detalle de gastos",
+        "width": 994
+    },
+    "configAlternates": {
+        "designer|userAlias": "string",
+        "designer|userClassName": "string",
+        "height": "auto",
+        "id": "string",
+        "title": "string",
+        "width": "auto"
+    },
+    "name": "pnlDetalleIngresos1",
+    "designerId": "c8091c5d-971f-44a6-80eb-75b8c7331fc6",
+    "viewControllerInstanceId": "a9137003-fe15-4cc3-a872-3cc706673c1d",
+    "viewModelInstanceId": "c4b1f0a0-4383-4bcb-a3b5-d422000218db"
+}

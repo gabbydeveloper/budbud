@@ -1,0 +1,28 @@
+{
+    "type": "Ext.panel.Panel",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userAlias": "pnldetalleingresos",
+        "designer|userClassName": "pnlDetalleIngresos",
+        "height": 627,
+        "id": "pnlDetalleIngresos",
+        "title": "Detalle de ingresos",
+        "width": 994
+    },
+    "configAlternates": {
+        "designer|userAlias": "string",
+        "designer|userClassName": "string",
+        "height": "auto",
+        "id": "string",
+        "title": "string",
+        "width": "auto"
+    },
+    "name": "pnlTendencias1",
+    "designerId": "de126ca9-3e2e-46c5-bb3e-b812771a5552",
+    "viewControllerInstanceId": "86a1a114-c064-4cce-81ba-bdc3bce2976b",
+    "viewModelInstanceId": "188ce29c-8bb8-4911-ac93-0bee64f2144f"
+}

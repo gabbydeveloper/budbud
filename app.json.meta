@@ -1,0 +1,1 @@
+{"_comment":"Please don't edit. This is Architect data.","name":"Bud","resources":[],"requires":["font-awesome"],"theme":"theme-triton-5e552297-c306-4908-aa0e-519226fadd56","classpath":"${app.dir}/app,${app.dir}/assets/js/","css":[],"js":[{"path":"assets/js/Tree.js","includeInBundle":true}]}

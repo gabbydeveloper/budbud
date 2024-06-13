@@ -1,0 +1,28 @@
+{
+    "type": "Ext.panel.Panel",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userAlias": "pnlprogreso",
+        "designer|userClassName": "pnlProgreso",
+        "height": 627,
+        "id": "pnlProgreso",
+        "title": "Progreso",
+        "width": 994
+    },
+    "configAlternates": {
+        "designer|userAlias": "string",
+        "designer|userClassName": "string",
+        "height": "auto",
+        "id": "string",
+        "title": "string",
+        "width": "auto"
+    },
+    "name": "pnlTendencias3",
+    "designerId": "4e85c477-8c4f-4be1-bbf6-16761f6e8962",
+    "viewControllerInstanceId": "dcc7fd9b-63d5-4f01-bdf2-ebe8328f415c",
+    "viewModelInstanceId": "ac65222b-5638-4720-baac-90ffe6424727"
+}

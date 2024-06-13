@@ -1,0 +1,28 @@
+{
+    "type": "Ext.panel.Panel",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userAlias": "pnlcomparacion",
+        "designer|userClassName": "pnlComparacion",
+        "height": 627,
+        "id": "pnlComparacion",
+        "title": "Comparación real vs presupuestado",
+        "width": 994
+    },
+    "configAlternates": {
+        "designer|userAlias": "string",
+        "designer|userClassName": "string",
+        "height": "auto",
+        "id": "string",
+        "title": "string",
+        "width": "auto"
+    },
+    "name": "pnlDetalleGastos2",
+    "designerId": "9ca5ca93-8b28-4639-918e-f86807b95ac9",
+    "viewControllerInstanceId": "ac7aed70-c289-4313-9342-370aa7dd8d7c",
+    "viewModelInstanceId": "772fc507-27a1-467d-be6c-7c6a950ad968"
+}

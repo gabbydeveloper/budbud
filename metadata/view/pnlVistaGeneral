@@ -1,0 +1,28 @@
+{
+    "type": "Ext.panel.Panel",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userAlias": "pnlvistageneral",
+        "designer|userClassName": "pnlVistaGeneral",
+        "height": 627,
+        "id": "pnlVistaGeneral",
+        "title": "Vista general",
+        "width": 994
+    },
+    "configAlternates": {
+        "designer|userAlias": "string",
+        "designer|userClassName": "string",
+        "height": "auto",
+        "id": "string",
+        "title": "string",
+        "width": "auto"
+    },
+    "name": "MyPanel",
+    "designerId": "f3d7ec5d-d350-48fd-ade2-cf0e1bb1d6b4",
+    "viewControllerInstanceId": "23462cca-e593-4f2d-9faf-10ac908bc592",
+    "viewModelInstanceId": "1114cb49-6f6f-4c3d-b440-ba412bbd0ea4"
+}
