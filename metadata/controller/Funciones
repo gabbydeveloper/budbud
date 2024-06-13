@@ -25,6 +25,82 @@
             "codeClass": null,
             "userConfig": {
                 "designer|params": [
+                    "tipo",
+                    "mensaje"
+                ],
+                "fn": "showMessg",
+                "implHandler": [
+                    "var titulo = '', task = null;",
+                    "switch(tipo)",
+                    "{",
+                    "  case 'INFO':",
+                    "    {",
+                    "      Ext.toast",
+                    "      (",
+                    "        {",
+                    "          html: mensaje,",
+                    "          closable: false,",
+                    "          align: 't',",
+                    "          slideDUration: 200,",
+                    "          maxWidth: 400",
+                    "        }",
+                    "      );",
+                    "      break;",
+                    "    }",
+                    "  case 'WARNING':",
+                    "    {",
+                    "      task = new Ext.util.DelayedTask(function(){",
+                    "        titulo = 'Alerta';",
+                    "        Ext.Msg.show",
+                    "        (",
+                    "          {",
+                    "            title: titulo,",
+                    "            msg: mensaje,",
+                    "            icon: Ext.Msg.WARNING,",
+                    "            buttons: Ext.Msg.OK",
+                    "          }",
+                    "        );",
+                    "      });",
+                    "      task.delay(100);",
+                    "      break;",
+                    "    }",
+                    "  case 'ERROR':",
+                    "    {",
+                    "      task = new Ext.util.DelayedTask(function(){",
+                    "        titulo = 'Error';",
+                    "        Ext.Msg.show",
+                    "        (",
+                    "          {",
+                    "            title: titulo,",
+                    "            msg: mensaje,",
+                    "            icon: Ext.Msg.ERROR,",
+                    "            buttons: Ext.Msg.OK",
+                    "          }",
+                    "        );",
+                    "      });",
+                    "      task.delay(100);",
+                    "      break;",
+                    "    }",
+                    "}"
+                ]
+            },
+            "configAlternates": {
+                "designer|params": "typedarray",
+                "fn": "string",
+                "implHandler": "code"
+            },
+            "name": "showMessg",
+            "designerId": "c76c820c-cee6-4d97-8b57-936af93d077d"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
                     "obj"
                 ],
                 "fn": "openPanel",
@@ -40,16 +116,9 @@
                     "    central.add(panel);",
                     "    panel.show();",
                     "  }",
-                    "  else",
-                    "  {",
-                    "    Ext.Msg.alert('Atención', 'Esta opción está abierta');",
-                    "  }",
                     "}",
                     "else",
-                    "{",
-                    "  Ext.create('Bud.view.winLogin');",
-                    "  Ext.getCmp('vpMain').destroy();",
-                    "}"
+                    "  Bud.controller.Funciones.exitApp();"
                 ]
             },
             "configAlternates": {
@@ -112,6 +181,117 @@
             },
             "name": "loadStore",
             "designerId": "8a0485c1-0f3e-4f33-ba43-8b89c0f8b869"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "exitApp",
+                "implHandler": [
+                    "const storage = Ext.util.LocalStorage.get('main');",
+                    "storage.clear();",
+                    "",
+                    "Ext.create('Bud.view.winLogin');",
+                    "Ext.getCmp('vpMain').destroy();"
+                ]
+            },
+            "configAlternates": {
+                "fn": "string",
+                "implHandler": "code"
+            },
+            "name": "exitApp",
+            "designerId": "f10757a7-8b6e-41c6-836b-0c2113954cfe"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "idWin",
+                    "aliasWin"
+                ],
+                "fn": "showWin",
+                "implHandler": [
+                    "var win = Ext.getCmp(idWin);",
+                    "if (win === null || typeof(win) === 'undefined')",
+                    "  win = Ext.create(aliasWin);",
+                    "Ext.getCmp('cntCentral').add(win);",
+                    "win.show();"
+                ]
+            },
+            "configAlternates": {
+                "designer|params": "typedarray",
+                "fn": "string",
+                "implHandler": "code"
+            },
+            "name": "showWin",
+            "designerId": "2fff5ad2-3bb1-4b48-bbb2-40ca70e7ba04"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "idForma",
+                    "data",
+                    "idGridRefresca"
+                ],
+                "fn": "saveForm",
+                "implHandler": [
+                    "const user = CONFIG.user;",
+                    "const pass = CONFIG.pass;",
+                    "const base64Credentials = btoa(user+':'+pass);",
+                    "const forma = Ext.getCmp(idForma).getForm();",
+                    "if(forma.isValid())",
+                    "  Ext.Ajax.request",
+                    "  (",
+                    "    {",
+                    "      url: CONFIG.apiUrl + 'saveform',",
+                    "      method: 'POST',",
+                    "      params: {",
+                    "        usuario: IDUSER,",
+                    "        idForma: idForma,",
+                    "        data: Ext.JSON.encode(data)",
+                    "      },",
+                    "      headers: {",
+                    "        'Authorization': 'Basic ' + base64Credentials",
+                    "      },",
+                    "      callback: function(obj, success, response)",
+                    "      {",
+                    "        let res = Ext.JSON.decode(response.responseText);",
+                    "        if(success)",
+                    "        {",
+                    "          Ext.getCmp(idGridRefresca).getStore().load();",
+                    "        }",
+                    "        else",
+                    "        {",
+                    "          const error = 'Ha ocurrido un error';",
+                    "          Bud.controller.Funciones.showMessg('ERROR', error);",
+                    "        }",
+                    "      }",
+                    "    }",
+                    "  );"
+                ]
+            },
+            "configAlternates": {
+                "designer|params": "typedarray",
+                "fn": "string",
+                "implHandler": "code"
+            },
+            "name": "saveForm",
+            "designerId": "c4c39d35-963a-435b-90ce-6dd1ac258d4e"
         }
     ]
 }

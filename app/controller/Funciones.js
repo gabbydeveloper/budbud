@@ -18,6 +18,61 @@ Ext.define('Bud.controller.Funciones', {
 
   singleton: true,
 
+  showMessg: function(tipo, mensaje) {
+    var titulo = '', task = null;
+    switch(tipo)
+    {
+      case 'INFO':
+        {
+          Ext.toast
+          (
+            {
+              html: mensaje,
+              closable: false,
+              align: 't',
+              slideDUration: 200,
+              maxWidth: 400
+            }
+          );
+          break;
+        }
+      case 'WARNING':
+        {
+          task = new Ext.util.DelayedTask(function(){
+            titulo = 'Alerta';
+            Ext.Msg.show
+            (
+              {
+                title: titulo,
+                msg: mensaje,
+                icon: Ext.Msg.WARNING,
+                buttons: Ext.Msg.OK
+              }
+            );
+          });
+          task.delay(100);
+          break;
+        }
+      case 'ERROR':
+        {
+          task = new Ext.util.DelayedTask(function(){
+            titulo = 'Error';
+            Ext.Msg.show
+            (
+              {
+                title: titulo,
+                msg: mensaje,
+                icon: Ext.Msg.ERROR,
+                buttons: Ext.Msg.OK
+              }
+            );
+          });
+          task.delay(100);
+          break;
+        }
+    }
+  },
+
   openPanel: function(obj) {
     if(obj !== 'exit')
     {
@@ -30,16 +85,9 @@ Ext.define('Bud.controller.Funciones', {
         central.add(panel);
         panel.show();
       }
-      else
-      {
-        Ext.Msg.alert('Atención', 'Esta opción está abierta');
-      }
     }
     else
-    {
-      Ext.create('Bud.view.winLogin');
-      Ext.getCmp('vpMain').destroy();
-    }
+      Bud.controller.Funciones.exitApp();
   },
 
   loadStore: function(name, endPoint, extraParams) {
@@ -71,6 +119,58 @@ Ext.define('Bud.controller.Funciones', {
     store.proxy.extraParams = params;
 
     store.load();
+  },
+
+  exitApp: function() {
+    const storage = Ext.util.LocalStorage.get('main');
+    storage.clear();
+
+    Ext.create('Bud.view.winLogin');
+    Ext.getCmp('vpMain').destroy();
+  },
+
+  showWin: function(idWin, aliasWin) {
+    var win = Ext.getCmp(idWin);
+    if (win === null || typeof(win) === 'undefined')
+      win = Ext.create(aliasWin);
+    Ext.getCmp('cntCentral').add(win);
+    win.show();
+  },
+
+  saveForm: function(idForma, data, idGridRefresca) {
+    const user = CONFIG.user;
+    const pass = CONFIG.pass;
+    const base64Credentials = btoa(user+':'+pass);
+    const forma = Ext.getCmp(idForma).getForm();
+    if(forma.isValid())
+      Ext.Ajax.request
+      (
+        {
+          url: CONFIG.apiUrl + 'saveform',
+          method: 'POST',
+          params: {
+            usuario: IDUSER,
+            idForma: idForma,
+            data: Ext.JSON.encode(data)
+          },
+          headers: {
+            'Authorization': 'Basic ' + base64Credentials
+          },
+          callback: function(obj, success, response)
+          {
+            let res = Ext.JSON.decode(response.responseText);
+            if(success)
+            {
+              Ext.getCmp(idGridRefresca).getStore().load();
+            }
+            else
+            {
+              const error = 'Ha ocurrido un error';
+              Bud.controller.Funciones.showMessg('ERROR', error);
+            }
+          }
+        }
+      );
   }
 
 });

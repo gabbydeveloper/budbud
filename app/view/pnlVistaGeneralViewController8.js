@@ -17,6 +17,10 @@ Ext.define('Bud.view.pnlVistaGeneralViewController8', {
   extend: 'Ext.app.ViewController',
   alias: 'controller.pnlcategorias',
 
+  onBtnIngresosClick: function(button, e, eOpts) {
+    Bud.controller.Funciones.showWin('winCategorias', 'Bud.view.winCategorias');
+  },
+
   onPnlCategoriasAfterRender: function(component, eOpts) {
     Bud.controller.Funciones.loadStore('categoriasStore', 'tipos', {tipo: 'M'});
   }

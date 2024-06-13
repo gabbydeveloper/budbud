@@ -1,0 +1,264 @@
+{
+    "type": "Ext.window.Window",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "constrain": true,
+        "designer|userAlias": "wincategorias",
+        "designer|userClassName": "winCategorias",
+        "height": 243,
+        "id": "winCategorias",
+        "layout": "fit",
+        "resizable": false,
+        "title": "Categorías",
+        "width": 368
+    },
+    "configAlternates": {
+        "constrain": "boolean",
+        "designer|userAlias": "string",
+        "designer|userClassName": "string",
+        "height": "auto",
+        "id": "string",
+        "layout": "string",
+        "resizable": "boolean",
+        "title": "string",
+        "width": "auto"
+    },
+    "name": "MyWindow",
+    "designerId": "7c82eb5c-bc66-42b3-bff6-cd8f6d5d7543",
+    "viewControllerInstanceId": "b12f85f4-a05b-4fad-bb89-60c6ce762f0e",
+    "viewModelInstanceId": "6b1ab4b5-894c-40fe-b97e-36c9a97d1b84",
+    "cn": [
+        {
+            "type": "Ext.form.Panel",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fieldDefaults": [
+                    "{",
+                    "  labelWidth: 90,",
+                    "  labelAlign: 'right',",
+                    "  msgTarget: 'side',",
+                    "  anchor: '100%',",
+                    "  margin: '0 0 5 0',",
+                    "  msgTarget: 'qtip'",
+                    "}"
+                ],
+                "id": "frmCategorias",
+                "layout": "fit",
+                "resizable": true
+            },
+            "configAlternates": {
+                "fieldDefaults": "object",
+                "id": "string",
+                "layout": "string",
+                "resizable": "boolean"
+            },
+            "name": "MyForm",
+            "designerId": "3cc3b3b5-3462-4d4c-8da0-9b9d4b2dffce",
+            "cn": [
+                {
+                    "type": "Ext.form.FieldSet",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "margin": "10 0 0 0"
+                    },
+                    "configAlternates": {
+                        "margin": "auto"
+                    },
+                    "name": "MyFieldSet",
+                    "designerId": "612a8152-52f4-4d29-9bcf-40207d09300d",
+                    "cn": [
+                        {
+                            "type": "Ext.form.field.ComboBox",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "allowBlank": false,
+                                "fieldLabel": "Tipo",
+                                "layout|anchor": "100%",
+                                "name": "tipo_ingreso_gasto_meta",
+                                "store": [
+                                    "[['I','Ingreso'],['G','Gasto'],['M','Meta']]"
+                                ]
+                            },
+                            "configAlternates": {
+                                "store": "array",
+                                "allowBlank": "boolean",
+                                "fieldLabel": "string",
+                                "layout|anchor": "string",
+                                "name": "string"
+                            },
+                            "name": "MyComboBox",
+                            "designerId": "3be2c550-f16a-405a-8203-7e404dc74d79"
+                        },
+                        {
+                            "type": "Ext.form.field.Text",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "allowBlank": false,
+                                "fieldLabel": "Descripción",
+                                "layout|anchor": "100%",
+                                "name": "nombre_tipo_ingreso_gasto_meta"
+                            },
+                            "configAlternates": {
+                                "allowBlank": "boolean",
+                                "fieldLabel": "string",
+                                "layout|anchor": "string",
+                                "name": "string"
+                            },
+                            "name": "MyTextField",
+                            "designerId": "a83f14ee-560d-4e51-a4ea-3160a9122a5f"
+                        },
+                        {
+                            "type": "Ext.container.Container",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "layout": "fit",
+                                "margin": "20 20 0 20"
+                            },
+                            "configAlternates": {
+                                "layout": "string",
+                                "margin": "auto"
+                            },
+                            "name": "MyContainer",
+                            "designerId": "80d28b34-7dc6-4b26-bd36-6981138c8fd8",
+                            "cn": [
+                                {
+                                    "type": "Ext.button.Button",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "text": "Grabar"
+                                    },
+                                    "configAlternates": {
+                                        "text": "string"
+                                    },
+                                    "name": "MyButton",
+                                    "designerId": "ec784251-1011-4534-abed-47155cfb9b67",
+                                    "cn": [
+                                        {
+                                            "type": "viewcontrollereventbinding",
+                                            "reference": {
+                                                "name": "listeners",
+                                                "type": "array"
+                                            },
+                                            "codeClass": null,
+                                            "userConfig": {
+                                                "fn": "onBtnGrabarClick",
+                                                "implHandler": [
+                                                    "const forma = Ext.getCmp('frmCategorias').getForm();",
+                                                    "const data = forma.getValues();",
+                                                    "Bud.controller.Funciones.saveForm('frmCategorias', data, 'grdCategorias');",
+                                                    "this.getView().close();"
+                                                ],
+                                                "name": "click",
+                                                "scope": "me"
+                                            },
+                                            "configAlternates": {
+                                                "fn": "string",
+                                                "implHandler": "code",
+                                                "name": "string",
+                                                "scope": "string"
+                                            },
+                                            "name": "onBtnGrabarClick",
+                                            "designerId": "74315e04-056d-4c7e-9dd0-ae8991d3ff96"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "Ext.button.Button",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "margin": "5 0 0 0",
+                                        "text": "Cerrar"
+                                    },
+                                    "configAlternates": {
+                                        "margin": "auto",
+                                        "text": "string"
+                                    },
+                                    "name": "MyButton1",
+                                    "designerId": "673b78e4-692d-4375-a7e1-7be97116119e",
+                                    "cn": [
+                                        {
+                                            "type": "viewcontrollereventbinding",
+                                            "reference": {
+                                                "name": "listeners",
+                                                "type": "array"
+                                            },
+                                            "codeClass": null,
+                                            "userConfig": {
+                                                "fn": "onBtnCerrarClick",
+                                                "implHandler": [
+                                                    "this.getView().close();"
+                                                ],
+                                                "name": "click",
+                                                "scope": "me"
+                                            },
+                                            "configAlternates": {
+                                                "fn": "string",
+                                                "implHandler": "code",
+                                                "name": "string",
+                                                "scope": "string"
+                                            },
+                                            "name": "onBtnCerrarClick",
+                                            "designerId": "90df144a-468d-4e47-857e-af9762096a84"
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "type": "Ext.form.field.Hidden",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "fieldLabel": "Label",
+                                "layout|anchor": "100%",
+                                "name": "id_tipo_ingreso_gasto_meta"
+                            },
+                            "configAlternates": {
+                                "fieldLabel": "string",
+                                "layout|anchor": "string",
+                                "name": "string"
+                            },
+                            "name": "MyHiddenField",
+                            "designerId": "f0cb71f4-0053-4098-8639-a34ba5f81624"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

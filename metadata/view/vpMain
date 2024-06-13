@@ -226,8 +226,7 @@
                             "userConfig": {
                                 "fn": "onBtnSalirClick",
                                 "implHandler": [
-                                    "Ext.create('Bud.view.winLogin');",
-                                    "Ext.getCmp('vpMain').destroy();"
+                                    "Bud.controller.Funciones.exitApp();"
                                 ],
                                 "name": "click",
                                 "scope": "me"

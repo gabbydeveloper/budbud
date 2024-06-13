@@ -83,7 +83,53 @@
                                 "text": "string"
                             },
                             "name": "MyButton3",
-                            "designerId": "c13f5b49-09b1-4c3a-8b7e-7f9a314d3649"
+                            "designerId": "c13f5b49-09b1-4c3a-8b7e-7f9a314d3649",
+                            "cn": [
+                                {
+                                    "type": "viewcontrollereventbinding",
+                                    "reference": {
+                                        "name": "listeners",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "fn": "onBtnIngresosClick",
+                                        "implHandler": [
+                                            "Bud.controller.Funciones.showWin('winCategorias', 'Bud.view.winCategorias');"
+                                        ],
+                                        "name": "click",
+                                        "scope": "me"
+                                    },
+                                    "configAlternates": {
+                                        "fn": "string",
+                                        "implHandler": "code",
+                                        "name": "string",
+                                        "scope": "string"
+                                    },
+                                    "name": "onBtnIngresosClick",
+                                    "designerId": "ab9579f1-0232-4ebf-a5dc-b5b9ab4172ae"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "Ext.button.Button",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "iconCls": "x-fas fa-edit",
+                                "layout|flex": null,
+                                "text": "Modificar"
+                            },
+                            "configAlternates": {
+                                "iconCls": "string",
+                                "layout|flex": "number",
+                                "text": "string"
+                            },
+                            "name": "MyButton5",
+                            "designerId": "629c120c-4a07-40d1-ab59-dc78a3e5b9a1"
                         },
                         {
                             "type": "Ext.button.Button",
@@ -188,6 +234,44 @@
                     "codeClass": null,
                     "name": "MyTable",
                     "designerId": "f5d03701-d8e2-4b77-8e7f-4eb88ffa8b7a"
+                },
+                {
+                    "type": "Ext.toolbar.Toolbar",
+                    "reference": {
+                        "name": "dockedItems",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "dock": "bottom",
+                        "padding": 0
+                    },
+                    "configAlternates": {
+                        "dock": "string",
+                        "padding": "auto"
+                    },
+                    "name": "MyToolbar2",
+                    "designerId": "0152755c-0553-4942-883d-dc9457305864",
+                    "cn": [
+                        {
+                            "type": "Ext.form.field.Display",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "layout|flex": null,
+                                "value": "0 ítems"
+                            },
+                            "configAlternates": {
+                                "layout|flex": "number",
+                                "value": "string"
+                            },
+                            "name": "MyDisplayField",
+                            "designerId": "02bf05eb-e7f2-4dec-95c7-027105c63fa6"
+                        }
+                    ]
                 }
             ]
         },

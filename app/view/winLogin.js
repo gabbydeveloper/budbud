@@ -51,19 +51,28 @@ Ext.define('Bud.view.winLogin', {
     },
     {
       xtype: 'form',
+      id: 'frmLogin',
       bodyPadding: 10,
       items: [
         {
           xtype: 'textfield',
           anchor: '100%',
+          id: 'txtMail',
+          inputType: 'email',
           allowBlank: false,
-          emptyText: 'Usuario'
+          emptyText: 'E-mail'
         },
         {
           xtype: 'textfield',
           anchor: '100%',
+          id: 'txtClave',
+          inputType: 'password',
           allowBlank: false,
-          emptyText: 'Clave'
+          emptyText: 'Clave',
+          enableKeyEvents: true,
+          listeners: {
+            specialkey: 'onTxtClaveSpecialkey'
+          }
         },
         {
           xtype: 'container',

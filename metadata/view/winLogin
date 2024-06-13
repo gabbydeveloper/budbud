@@ -66,10 +66,12 @@
             },
             "codeClass": null,
             "userConfig": {
-                "bodyPadding": 10
+                "bodyPadding": 10,
+                "id": "frmLogin"
             },
             "configAlternates": {
-                "bodyPadding": "auto"
+                "bodyPadding": "auto",
+                "id": "string"
             },
             "name": "MyForm",
             "designerId": "e92bd460-234b-491b-9059-da6b85337983",
@@ -83,13 +85,17 @@
                     "codeClass": null,
                     "userConfig": {
                         "allowBlank": false,
-                        "emptyText": "Usuario",
+                        "emptyText": "E-mail",
+                        "id": "txtMail",
+                        "inputType": "email",
                         "layout|anchor": "100%"
                     },
                     "configAlternates": {
                         "allowBlank": "boolean",
                         "emptyText": "string",
-                        "layout|anchor": "string"
+                        "layout|anchor": "string",
+                        "id": "string",
+                        "inputType": "string"
                     },
                     "name": "MyTextField",
                     "designerId": "7ce603f5-b647-44b6-b7f0-2e727dfd375e"
@@ -104,15 +110,48 @@
                     "userConfig": {
                         "allowBlank": false,
                         "emptyText": "Clave",
+                        "enableKeyEvents": true,
+                        "id": "txtClave",
+                        "inputType": "password",
                         "layout|anchor": "100%"
                     },
                     "configAlternates": {
                         "allowBlank": "boolean",
                         "emptyText": "string",
-                        "layout|anchor": "string"
+                        "layout|anchor": "string",
+                        "enableKeyEvents": "boolean",
+                        "id": "string",
+                        "inputType": "string"
                     },
                     "name": "MyTextField1",
-                    "designerId": "d9ded464-b3e2-4cb6-8c3e-5cb1cff53b77"
+                    "designerId": "d9ded464-b3e2-4cb6-8c3e-5cb1cff53b77",
+                    "cn": [
+                        {
+                            "type": "viewcontrollereventbinding",
+                            "reference": {
+                                "name": "listeners",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "fn": "onTxtClaveSpecialkey",
+                                "implHandler": [
+                                    "if(e.getKey() == e.ENTER)",
+                                    "  this.onBtnIngresarClick();"
+                                ],
+                                "name": "specialkey",
+                                "scope": "me"
+                            },
+                            "configAlternates": {
+                                "fn": "string",
+                                "implHandler": "code",
+                                "name": "string",
+                                "scope": "string"
+                            },
+                            "name": "onTxtClaveSpecialkey",
+                            "designerId": "d0f75086-9543-473d-9994-52e413a22082"
+                        }
+                    ]
                 },
                 {
                     "type": "Ext.container.Container",
@@ -156,8 +195,43 @@
                                     "userConfig": {
                                         "fn": "onBtnIngresarClick",
                                         "implHandler": [
-                                            "Ext.create('Bud.view.vpMain');",
-                                            "Ext.getCmp('winLogin').destroy();"
+                                            "const forma = Ext.getCmp('frmLogin').getForm();",
+                                            "const storage = Ext.util.LocalStorage.get('main');",
+                                            "const user = CONFIG.user;",
+                                            "const pass = CONFIG.pass;",
+                                            "const base64Credentials = btoa(user+':'+pass);",
+                                            "",
+                                            "",
+                                            "if(forma.isValid())",
+                                            "{",
+                                            "  Ext.Ajax.request",
+                                            "  (",
+                                            "    {",
+                                            "      url: CONFIG.apiUrl + 'loginbud',",
+                                            "      method: 'GET',",
+                                            "      params: {",
+                                            "        usr: Ext.getCmp('txtMail').getValue(),",
+                                            "        pwd: Ext.getCmp('txtClave').getValue()",
+                                            "      },",
+                                            "      headers: {",
+                                            "        'Authorization': 'Basic ' + base64Credentials",
+                                            "      },",
+                                            "      callback: function(obj, success, response)",
+                                            "      {",
+                                            "        if(success)",
+                                            "        {",
+                                            "          let res = Ext.JSON.decode(response.responseText);",
+                                            "          IDUSER = res.id_usuario;",
+                                            "          storage.setItem('token', res.token);",
+                                            "          Ext.create('Bud.view.vpMain');",
+                                            "          Ext.getCmp('winLogin').destroy();",
+                                            "        }",
+                                            "        else",
+                                            "          Bud.controller.Funciones.showMessg('INFO', 'Mail o clave incorrectos');",
+                                            "      }",
+                                            "    }",
+                                            "  );",
+                                            "}"
                                         ],
                                         "name": "click",
                                         "scope": "me"

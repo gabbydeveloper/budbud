@@ -21,11 +21,13 @@ Ext.Loader.setConfig({
 
 Ext.application({
   models: [
-    'categoriasModel'
+    'categoriasModel',
+    'usuarioModel'
   ],
   stores: [
     'menuStore',
-    'categoriasStore'
+    'categoriasStore',
+    'loginStore'
   ],
   views: [
     'vpMain',
@@ -38,7 +40,8 @@ Ext.application({
     'pnlComparacion',
     'pnlDetalleMetas',
     'pnlProgreso',
-    'pnlCategorias'
+    'pnlCategorias',
+    'winCategorias'
   ],
   name: 'Bud',
 
@@ -61,22 +64,54 @@ Ext.application({
     {
       Ext.Ajax.request({
         url: 'assets/json/config.' + env + '.json',
-        success: function(response) {
+        success: function(response)
+        {
           CONFIG = Ext.decode(response.responseText);
-          var storage = Ext.util.LocalStorage.get('main');
-          var token = storage.getItem('token');
-
-          IDUSER = 1;
+          const storage = Ext.util.LocalStorage.get('main');
+          let token = storage.getItem('token');
+          const main = Ext.getCmp('vpMain');
 
           if(token === null)
           {
-            storage.setItem('token', '145778sf4ioif');
-            token = storage.getItem('token');
+            IDUSER = null;
+            if(typeof(main) !== 'undefined')
+              main.destroy();
+            Ext.create('Bud.view.winLogin');
           }
-
-          //console.log(token);
-          //console.log(storage);
-          Ext.create('Bud.view.winLogin');
+          else
+          {
+            const user = CONFIG.user;
+            const pass = CONFIG.pass;
+            const base64Credentials = btoa(user+':'+pass);
+            Ext.Ajax.request
+            (
+              {
+                url: CONFIG.apiUrl + 'userbud',
+                method: 'GET',
+                params: {
+                  tkn: token
+                },
+                headers: {
+                  'Authorization': 'Basic ' + base64Credentials
+                },
+                callback: function(obj, success, response)
+                {
+                  if(success)
+                  {
+                    let res = Ext.JSON.decode(response.responseText);
+                    IDUSER = res.id_usuario;
+                    Ext.create('Bud.view.vpMain');
+                  }
+                  else
+                  {
+                    if(typeof(main) !== 'undefined')
+                      main.destroy();
+                    Ext.create('Bud.view.winLogin');
+                  }
+                }
+              }
+            );
+          }
         },
         failure: function() {
           Ext.Msg.alert('Error', 'No se pudo cargar el archivo de configuración.');

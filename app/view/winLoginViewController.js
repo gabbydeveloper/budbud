@@ -17,9 +17,49 @@ Ext.define('Bud.view.winLoginViewController', {
   extend: 'Ext.app.ViewController',
   alias: 'controller.winlogin',
 
+  onTxtClaveSpecialkey: function(field, e, eOpts) {
+    if(e.getKey() == e.ENTER)
+    this.onBtnIngresarClick();
+  },
+
   onBtnIngresarClick: function(button, e, eOpts) {
-    Ext.create('Bud.view.vpMain');
-    Ext.getCmp('winLogin').destroy();
+    const forma = Ext.getCmp('frmLogin').getForm();
+    const storage = Ext.util.LocalStorage.get('main');
+    const user = CONFIG.user;
+    const pass = CONFIG.pass;
+    const base64Credentials = btoa(user+':'+pass);
+
+
+    if(forma.isValid())
+    {
+      Ext.Ajax.request
+      (
+      {
+        url: CONFIG.apiUrl + 'loginbud',
+        method: 'GET',
+        params: {
+          usr: Ext.getCmp('txtMail').getValue(),
+          pwd: Ext.getCmp('txtClave').getValue()
+        },
+        headers: {
+          'Authorization': 'Basic ' + base64Credentials
+        },
+        callback: function(obj, success, response)
+        {
+          if(success)
+          {
+            let res = Ext.JSON.decode(response.responseText);
+            IDUSER = res.id_usuario;
+            storage.setItem('token', res.token);
+            Ext.create('Bud.view.vpMain');
+            Ext.getCmp('winLogin').destroy();
+          }
+          else
+          Bud.controller.Funciones.showMessg('INFO', 'Mail o clave incorrectos');
+        }
+      }
+      );
+    }
   }
 
 });

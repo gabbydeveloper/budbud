@@ -24,7 +24,8 @@ Ext.define('Bud.view.pnlCategorias', {
     'Ext.toolbar.Toolbar',
     'Ext.button.Button',
     'Ext.grid.column.Column',
-    'Ext.view.Table'
+    'Ext.view.Table',
+    'Ext.form.field.Display'
   ],
 
   controller: 'pnlcategorias',
@@ -51,12 +52,31 @@ Ext.define('Bud.view.pnlCategorias', {
             {
               xtype: 'button',
               iconCls: 'x-fa fa-plus',
-              text: 'Insertar'
+              text: 'Insertar',
+              listeners: {
+                click: 'onBtnIngresosClick'
+              }
+            },
+            {
+              xtype: 'button',
+              iconCls: 'x-fas fa-edit',
+              text: 'Modificar'
             },
             {
               xtype: 'button',
               iconCls: 'x-fa fa-minus',
               text: 'Eliminar'
+            }
+          ]
+        },
+        {
+          xtype: 'toolbar',
+          dock: 'bottom',
+          padding: 0,
+          items: [
+            {
+              xtype: 'displayfield',
+              value: '0 ítems'
             }
           ]
         }
@@ -67,8 +87,8 @@ Ext.define('Bud.view.pnlCategorias', {
           renderer: function(value, metaData, record, rowIndex, colIndex, store, view) {
             return (value === 'I' ? 'Ingreso' : (value === 'G' ? 'Gasto' : 'Meta'));
           },
-          dataIndex: 'tipo_ingreso_gasto_meta',
           width: '25%',
+          dataIndex: 'tipo_ingreso_gasto_meta',
           text: 'Tipo'
         },
         {

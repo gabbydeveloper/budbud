@@ -36,8 +36,7 @@ Ext.define('Bud.view.VpMainViewController', {
   },
 
   onBtnSalirClick: function(button, e, eOpts) {
-    Ext.create('Bud.view.winLogin');
-    Ext.getCmp('vpMain').destroy();
+    Bud.controller.Funciones.exitApp();
   },
 
   onTlMenuSelectionChange: function(treelist, record, eOpts) {
