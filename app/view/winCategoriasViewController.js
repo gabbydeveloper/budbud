@@ -26,6 +26,13 @@ Ext.define('Bud.view.winCategoriasViewController', {
 
   onBtnCerrarClick: function(button, e, eOpts) {
     this.getView().close();
+  },
+
+  onWinCategoriasAfterRender: function(component, eOpts) {
+    if(component.data){
+      console.log(component.data);
+      Ext.getCmp('frmCategorias').getForm().setValues(component.data);
+    }
   }
 
 });

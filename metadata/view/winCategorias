@@ -259,6 +259,33 @@
                     ]
                 }
             ]
+        },
+        {
+            "type": "viewcontrollereventbinding",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "onWinCategoriasAfterRender",
+                "implHandler": [
+                    "if(component.data){",
+                    "  console.log(component.data);",
+                    "  Ext.getCmp('frmCategorias').getForm().setValues(component.data);",
+                    "}"
+                ],
+                "name": "afterrender",
+                "scope": "me"
+            },
+            "configAlternates": {
+                "fn": "string",
+                "implHandler": "code",
+                "name": "string",
+                "scope": "string"
+            },
+            "name": "onWinCategoriasAfterRender",
+            "designerId": "583a18b3-2206-41fd-8a43-743af67bbf7c"
         }
     ]
 }

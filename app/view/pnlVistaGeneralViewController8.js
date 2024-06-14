@@ -21,8 +21,21 @@ Ext.define('Bud.view.pnlVistaGeneralViewController8', {
     Bud.controller.Funciones.showWin('winCategorias', 'Bud.view.winCategorias');
   },
 
+  onBtnModificarClick: function(button, e, eOpts) {
+    const grid = Ext.getCmp('grdCategorias');
+    const select = grid.getSelectionModel();
+    const items = select.selected.items;
+    if (items.length === 1){
+      Bud.controller.Funciones.showWin('winCategorias', 'Bud.view.winCategorias', {data: items[0].data});
+    }
+  },
+
+  onBtnRefrescarClick: function(button, e, eOpts) {
+    Ext.getCmp('grdCategorias').getStore().load();
+  },
+
   onPnlCategoriasAfterRender: function(component, eOpts) {
-    Bud.controller.Funciones.loadStore('categoriasStore', 'tipos', {tipo: 'M'});
+    Bud.controller.Funciones.loadStore('categoriasStore', 'tipos', {tipo: 'M'}, 'grdCategorias');
   }
 
 });

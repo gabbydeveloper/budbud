@@ -87,25 +87,22 @@ Ext.define('Bud.controller.Funciones', {
       }
     }
     else
-      Bud.controller.Funciones.exitApp();
+      this.exitApp();
   },
 
-  loadStore: function(name, endPoint, extraParams) {
-
+  loadStore: function(name, endPoint, extraParams, idGrid) {
     const store = Ext.data.StoreManager.lookup(name);
     const baseUrl = CONFIG.apiUrl + endPoint;
     const user = CONFIG.user;
     const pass = CONFIG.pass;
-    let params = {usuario: IDUSER};
-
     const base64Credentials = btoa(user+':'+pass);
+    const me = this;
+    let params = {usuario: IDUSER};
 
     store.proxy.setConfig('url', baseUrl);
     store.proxy.setConfig('headers', {
       'Authorization': 'Basic ' + base64Credentials
     });
-
-
 
     if(extraParams)
     {
@@ -118,7 +115,20 @@ Ext.define('Bud.controller.Funciones', {
 
     store.proxy.extraParams = params;
 
-    store.load();
+    store.load({
+      callback: function(records, operation, success){
+        if(success){
+          const grid = Ext.getCmp(idGrid);
+          if(typeof(grid) !== 'undefined'){
+            const etiqueta = grid.down('toolbar[dock="bottom"]').down('#showItemNumbers');
+            etiqueta.setValue(records.length + ' ítems');
+          }
+        }
+        else{
+          me.showMessg('ERROR', 'Ha ocurrido un error');
+        }
+      }
+    });
   },
 
   exitApp: function() {
@@ -129,10 +139,19 @@ Ext.define('Bud.controller.Funciones', {
     Ext.getCmp('vpMain').destroy();
   },
 
-  showWin: function(idWin, aliasWin) {
+  showWin: function(idWin, aliasWin, params) {
     var win = Ext.getCmp(idWin);
     if (win === null || typeof(win) === 'undefined')
       win = Ext.create(aliasWin);
+
+    //Poner parámetros en la ventana para casos especiales
+    if(params !== '' && params !== null && typeof(params) !== 'undefined')
+    {
+      Object.getOwnPropertyNames(params).forEach(function(val, idx, array){
+        win[val] = params[val];
+      });
+    }
+
     Ext.getCmp('cntCentral').add(win);
     win.show();
   },
@@ -142,6 +161,7 @@ Ext.define('Bud.controller.Funciones', {
     const pass = CONFIG.pass;
     const base64Credentials = btoa(user+':'+pass);
     const forma = Ext.getCmp(idForma).getForm();
+    const me = this;
     if(forma.isValid())
       Ext.Ajax.request
       (
@@ -166,7 +186,7 @@ Ext.define('Bud.controller.Funciones', {
             else
             {
               const error = 'Ha ocurrido un error';
-              Bud.controller.Funciones.showMessg('ERROR', error);
+              me.showMessg('ERROR', error);
             }
           }
         }

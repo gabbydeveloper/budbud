@@ -23,6 +23,7 @@ Ext.define('Bud.view.pnlCategorias', {
     'Ext.grid.Panel',
     'Ext.toolbar.Toolbar',
     'Ext.button.Button',
+    'Ext.toolbar.Separator',
     'Ext.grid.column.Column',
     'Ext.view.Table',
     'Ext.form.field.Display'
@@ -60,12 +61,25 @@ Ext.define('Bud.view.pnlCategorias', {
             {
               xtype: 'button',
               iconCls: 'x-fas fa-edit',
-              text: 'Modificar'
+              text: 'Modificar',
+              listeners: {
+                click: 'onBtnModificarClick'
+              }
             },
             {
               xtype: 'button',
               iconCls: 'x-fa fa-minus',
               text: 'Eliminar'
+            },
+            {
+              xtype: 'tbseparator'
+            },
+            {
+              xtype: 'button',
+              iconCls: 'x-fa fa-sync-alt',
+              listeners: {
+                click: 'onBtnRefrescarClick'
+              }
             }
           ]
         },
@@ -76,6 +90,8 @@ Ext.define('Bud.view.pnlCategorias', {
           items: [
             {
               xtype: 'displayfield',
+              itemId: 'showItemNumbers',
+              margin: '0 0 0 10',
               value: '0 ítems'
             }
           ]

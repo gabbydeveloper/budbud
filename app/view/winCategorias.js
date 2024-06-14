@@ -118,6 +118,9 @@ Ext.define('Bud.view.winCategorias', {
         }
       ]
     }
-  ]
+  ],
+  listeners: {
+    afterrender: 'onWinCategoriasAfterRender'
+  }
 
 });
