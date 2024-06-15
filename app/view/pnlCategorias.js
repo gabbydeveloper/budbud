@@ -26,7 +26,8 @@ Ext.define('Bud.view.pnlCategorias', {
     'Ext.toolbar.Separator',
     'Ext.grid.column.Column',
     'Ext.view.Table',
-    'Ext.form.field.Display'
+    'Ext.form.field.Display',
+    'Ext.selection.RowModel'
   ],
 
   controller: 'pnlcategorias',
@@ -69,7 +70,10 @@ Ext.define('Bud.view.pnlCategorias', {
             {
               xtype: 'button',
               iconCls: 'x-fa fa-minus',
-              text: 'Eliminar'
+              text: 'Eliminar',
+              listeners: {
+                click: 'onBtnEliminarClick'
+              }
             },
             {
               xtype: 'tbseparator'
@@ -113,7 +117,11 @@ Ext.define('Bud.view.pnlCategorias', {
           dataIndex: 'nombre_tipo_ingreso_gasto_meta',
           text: 'Descripción'
         }
-      ]
+      ],
+      selModel: {
+        selType: 'rowmodel',
+        mode: 'MULTI'
+      }
     }
   ],
   listeners: {

@@ -19,7 +19,7 @@ Ext.define('Bud.controller.Funciones', {
   singleton: true,
 
   showMessg: function(tipo, mensaje) {
-    var titulo = '', task = null;
+    let titulo = '', task = null;
     switch(tipo)
     {
       case 'INFO':
@@ -92,16 +92,13 @@ Ext.define('Bud.controller.Funciones', {
 
   loadStore: function(name, endPoint, extraParams, idGrid) {
     const store = Ext.data.StoreManager.lookup(name);
-    const baseUrl = CONFIG.apiUrl + endPoint;
-    const user = CONFIG.user;
-    const pass = CONFIG.pass;
-    const base64Credentials = btoa(user+':'+pass);
     const me = this;
+    const cnx = me.getConnectData(endPoint);
     let params = {usuario: IDUSER};
 
-    store.proxy.setConfig('url', baseUrl);
+    store.proxy.setConfig('url', cnx[0]);
     store.proxy.setConfig('headers', {
-      'Authorization': 'Basic ' + base64Credentials
+      'Authorization': 'Basic ' + cnx[1]
     });
 
     if(extraParams)
@@ -156,41 +153,103 @@ Ext.define('Bud.controller.Funciones', {
     win.show();
   },
 
-  saveForm: function(idForma, data, idGridRefresca) {
+  saveForm: function(idWin, idForma, data, idGrid, closeWin) {
+    const user = CONFIG.user;
+    const pass = CONFIG.pass;
+    const forma = Ext.getCmp(idForma).getForm();
+    const me = this;
+    const cnx = me.getConnectData('saveform');
+    if(forma.isValid())
+      Ext.Ajax.request({
+        url: cnx[0],
+        method: 'POST',
+        params: {
+          usuario: IDUSER,
+          idForma: idForma,
+          data: Ext.JSON.encode(data)
+        },
+        headers: {
+          'Authorization': 'Basic ' + cnx[1]
+        },
+        callback: function(obj, success, response){
+          let res = Ext.JSON.decode(response.responseText);
+          if(success){
+            Ext.getCmp(idGrid).getStore().load();
+            if(closeWin)
+              Ext.getCmp(idWin).close();
+          }
+          else{
+            const error = 'Ha ocurrido un error';
+            me.showMessg('ERROR', error);
+          }
+        }
+      });
+  },
+
+  deleteRow: function(idGrid, colId) {
+    const grid = Ext.getCmp(idGrid);
+    const selection = grid.getSelectionModel().getSelection();
+    const me = this;
+    const cnx = me.getConnectData('deleterow');
+
+    if (selection.length > 0){
+      Ext.Msg.show({
+        title: 'Pregunta',
+        msg: '¿Realmente desea borrar el/los registro(s) seleccionado(s)',
+        icon: Ext.Msg.QUESTION,
+        buttonText: {
+          yes: 'Si',
+          no: 'No'
+        },
+        buttons: Ext.Msg.YESNO,
+        fn: function(btn){
+          if(btn === 'yes'){
+            let ids = [], k = 0;
+            for (k = 0; k < selection.length; k++){
+              ids[k] = selection[k].get(colId);
+            }
+            grid.mask();
+            Ext.Ajax.request({
+              url: cnx[0],
+              method: 'POST',
+              params: {
+                usuario: IDUSER,
+                idGrid: idGrid,
+                data: Ext.JSON.encode(ids)
+              },
+              headers: {
+                'Authorization': 'Basic ' + cnx[1]
+              },
+              callback: function(obj, success, response){
+                let res = Ext.JSON.decode(response.responseText);
+                if(success){
+                  grid.getStore().load();
+                  me.showMessg('INFO', 'Se borraron ' + res.total + ' registros');
+                }
+                else{
+                  const error = 'Ha ocurrido un error';
+                  me.showMessg('ERROR', error);
+                }
+                grid.unmask();
+              }
+            });
+
+          }
+        }
+      });
+    }
+    else{
+      this.showMessg('INFO', 'Seleccione al menos un registro');
+    }
+  },
+
+  getConnectData: function(endPoint) {
+    const url = CONFIG.apiUrl + endPoint;
     const user = CONFIG.user;
     const pass = CONFIG.pass;
     const base64Credentials = btoa(user+':'+pass);
-    const forma = Ext.getCmp(idForma).getForm();
-    const me = this;
-    if(forma.isValid())
-      Ext.Ajax.request
-      (
-        {
-          url: CONFIG.apiUrl + 'saveform',
-          method: 'POST',
-          params: {
-            usuario: IDUSER,
-            idForma: idForma,
-            data: Ext.JSON.encode(data)
-          },
-          headers: {
-            'Authorization': 'Basic ' + base64Credentials
-          },
-          callback: function(obj, success, response)
-          {
-            let res = Ext.JSON.decode(response.responseText);
-            if(success)
-            {
-              Ext.getCmp(idGridRefresca).getStore().load();
-            }
-            else
-            {
-              const error = 'Ha ocurrido un error';
-              me.showMessg('ERROR', error);
-            }
-          }
-        }
-      );
+
+    return [url, base64Credentials];
   }
 
 });

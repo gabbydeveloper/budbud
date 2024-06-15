@@ -46,7 +46,7 @@
             },
             "codeClass": null,
             "userConfig": {
-                "height": 60,
+                "height": 50,
                 "padding": 0
             },
             "configAlternates": {
@@ -67,30 +67,30 @@
                         "cls": [
                             "txtCabecera"
                         ],
-                        "html": "<img src=\"assets/img/logo.jpg\">",
+                        "dock": "top",
                         "id": "cmpHeader",
                         "layout|flex": null,
                         "responsiveConfig": [
                             "{",
                             "  xsmall: {",
                             "    width: 50,",
-                            "    html: '<img src=\"assets/img/logo_solo_bud.jpg\">'",
+                            "    html: '<img src=\"assets/img/logo_solo_bud.jpg\" width=\"50\">'",
                             "  },",
                             "  small: {",
                             "    width: 50,",
-                            "    html: '<img src=\"assets/img/logo_solo_bud.jpg\">'",
+                            "    html: '<img src=\"assets/img/logo_solo_bud.jpg\" width=\"50\">'",
                             "  },",
                             "  medium: {",
                             "    width: 190,",
-                            "    html: '<img src=\"assets/img/logo.jpg\">'",
+                            "    html: '<img src=\"assets/img/logo.jpg\" width=\"190\">'",
                             "  },",
                             "  large: {",
                             "    width: 195,",
-                            "    html: '<img src=\"assets/img/logo.jpg\">'",
+                            "    html: '<img src=\"assets/img/logo.jpg\" width=\"195\">'",
                             "  }",
                             "}"
                         ],
-                        "style": "background-color: #025197;",
+                        "style": "background-color: #005d8e;",
                         "width": 195
                     },
                     "configAlternates": {
@@ -100,7 +100,8 @@
                         "layout|flex": "number",
                         "responsiveConfig": "object",
                         "style": "string",
-                        "width": "auto"
+                        "width": "auto",
+                        "dock": "string"
                     },
                     "name": "MyComponent",
                     "designerId": "1f470a3e-0f13-47b3-9fac-5c84b4ed4baf"
@@ -139,14 +140,14 @@
                                     "  menu.setMicro(false);",
                                     "  menu.setWidth(195);",
                                     "  Ext.getCmp('cmpHeader').setWidth(195);",
-                                    "  Ext.getCmp('cmpHeader').setHtml('<img src=\"assets/img/logo.jpg\">');",
+                                    "  Ext.getCmp('cmpHeader').setHtml('<img src=\"assets/img/logo.jpg\" width=\"195\">');",
                                     "}",
                                     "else",
                                     "{",
                                     "  menu.setMicro(true);",
                                     "  menu.setWidth(50);",
                                     "  Ext.getCmp('cmpHeader').setWidth(50);",
-                                    "  Ext.getCmp('cmpHeader').setHtml('<img src=\"assets/img/logo_solo_bud.jpg\">');",
+                                    "  Ext.getCmp('cmpHeader').setHtml('<img src=\"assets/img/logo_solo_bud.jpg\" width=\"50\">');",
                                     "}"
                                 ],
                                 "name": "click",
@@ -338,14 +339,15 @@
                     },
                     "codeClass": null,
                     "userConfig": {
+                        "flex": 1,
                         "id": "cntCentral",
-                        "layout": "fit",
-                        "layout|flex": 1
+                        "layout": "fit"
                     },
                     "configAlternates": {
                         "layout|flex": "number",
                         "id": "string",
-                        "layout": "string"
+                        "layout": "string",
+                        "flex": "number"
                     },
                     "name": "MyContainer1",
                     "designerId": "6f2757e5-6c38-4387-bf4d-6f3e916fe6b8"

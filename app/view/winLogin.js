@@ -47,7 +47,7 @@ Ext.define('Bud.view.winLogin', {
       xtype: 'component',
       height: 85,
       html: '<div align="center"><img src="assets/img/logo.jpg" alt="logo" height="80"></div>',
-      style: 'background-color:#025197;'
+      style: 'background-color:#005d8e;'
     },
     {
       xtype: 'form',

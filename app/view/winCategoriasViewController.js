@@ -20,8 +20,7 @@ Ext.define('Bud.view.winCategoriasViewController', {
   onBtnGrabarClick: function(button, e, eOpts) {
     const forma = Ext.getCmp('frmCategorias').getForm();
     const data = forma.getValues();
-    Bud.controller.Funciones.saveForm('frmCategorias', data, 'grdCategorias');
-    this.getView().close();
+    Bud.controller.Funciones.saveForm('winCategorias', 'frmCategorias', data, 'grdCategorias', true);
   },
 
   onBtnCerrarClick: function(button, e, eOpts) {

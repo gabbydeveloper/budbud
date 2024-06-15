@@ -6,10 +6,12 @@
     },
     "codeClass": null,
     "userConfig": {
-        "designer|userClassName": "categoriasModel"
+        "designer|userClassName": "categoriasModel",
+        "idProperty": "id_tipo_ingreso_gasto_meta"
     },
     "configAlternates": {
-        "designer|userClassName": "string"
+        "designer|userClassName": "string",
+        "idProperty": "string"
     },
     "name": "MyModel",
     "designerId": "981af305-8da3-4bd8-873a-8c64fcfc31b2",

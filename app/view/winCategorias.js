@@ -32,11 +32,12 @@ Ext.define('Bud.view.winCategorias', {
     type: 'wincategorias'
   },
   constrain: true,
-  height: 243,
+  height: 198,
   id: 'winCategorias',
   resizable: false,
   width: 368,
   layout: 'fit',
+  closable: false,
   title: 'Categorías',
 
   items: [
@@ -56,11 +57,12 @@ Ext.define('Bud.view.winCategorias', {
       items: [
         {
           xtype: 'fieldset',
-          margin: '10 0 0 0',
+          margin: 0,
           items: [
             {
               xtype: 'combobox',
               anchor: '100%',
+              margin: '5 0 5 0',
               fieldLabel: 'Tipo',
               name: 'tipo_ingreso_gasto_meta',
               allowBlank: false,
@@ -88,7 +90,7 @@ Ext.define('Bud.view.winCategorias', {
             },
             {
               xtype: 'container',
-              margin: '20 20 0 20',
+              margin: '20 40 0 40',
               layout: 'fit',
               items: [
                 {

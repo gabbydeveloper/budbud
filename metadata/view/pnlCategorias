@@ -180,7 +180,33 @@
                                 "text": "string"
                             },
                             "name": "MyButton4",
-                            "designerId": "5c4d72af-7f67-404f-ab8f-6e45c3ed4e46"
+                            "designerId": "5c4d72af-7f67-404f-ab8f-6e45c3ed4e46",
+                            "cn": [
+                                {
+                                    "type": "viewcontrollereventbinding",
+                                    "reference": {
+                                        "name": "listeners",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "fn": "onBtnEliminarClick",
+                                        "implHandler": [
+                                            "Bud.controller.Funciones.deleteRow('grdCategorias', 'id_tipo_ingreso_gasto_meta');"
+                                        ],
+                                        "name": "click",
+                                        "scope": "me"
+                                    },
+                                    "configAlternates": {
+                                        "fn": "string",
+                                        "implHandler": "code",
+                                        "name": "string",
+                                        "scope": "string"
+                                    },
+                                    "name": "onBtnEliminarClick",
+                                    "designerId": "d9f75adf-d506-4096-9e56-db4805fff023"
+                                }
+                            ]
                         },
                         {
                             "type": "Ext.toolbar.Separator",
@@ -367,6 +393,22 @@
                             "designerId": "02bf05eb-e7f2-4dec-95c7-027105c63fa6"
                         }
                     ]
+                },
+                {
+                    "type": "Ext.selection.RowModel",
+                    "reference": {
+                        "name": "selModel",
+                        "type": "object"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "mode": "MULTI"
+                    },
+                    "configAlternates": {
+                        "mode": "string"
+                    },
+                    "name": "MyRowSelectionModel",
+                    "designerId": "9ea0e655-7878-45a1-8b32-50a99b332830"
                 }
             ]
         },

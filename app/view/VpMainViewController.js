@@ -24,14 +24,14 @@ Ext.define('Bud.view.VpMainViewController', {
       menu.setMicro(false);
       menu.setWidth(195);
       Ext.getCmp('cmpHeader').setWidth(195);
-      Ext.getCmp('cmpHeader').setHtml('<img src="assets/img/logo.jpg">');
+      Ext.getCmp('cmpHeader').setHtml('<img src="assets/img/logo.jpg" width="195">');
     }
     else
     {
       menu.setMicro(true);
       menu.setWidth(50);
       Ext.getCmp('cmpHeader').setWidth(50);
-      Ext.getCmp('cmpHeader').setHtml('<img src="assets/img/logo_solo_bud.jpg">');
+      Ext.getCmp('cmpHeader').setHtml('<img src="assets/img/logo_solo_bud.jpg" width="50">');
     }
   },
 

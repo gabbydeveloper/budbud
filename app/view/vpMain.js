@@ -48,32 +48,32 @@ Ext.define('Bud.view.vpMain', {
   items: [
     {
       xtype: 'toolbar',
-      height: 60,
+      height: 50,
       padding: 0,
       items: [
         {
           xtype: 'component',
           cls: 'txtCabecera',
-          html: '<img src="assets/img/logo.jpg">',
+          dock: 'top',
           id: 'cmpHeader',
-          style: 'background-color: #025197;',
+          style: 'background-color: #005d8e;',
           width: 195,
           responsiveConfig: {
             xsmall: {
               width: 50,
-              html: '<img src="assets/img/logo_solo_bud.jpg">'
+              html: '<img src="assets/img/logo_solo_bud.jpg" width="50">'
             },
             small: {
               width: 50,
-              html: '<img src="assets/img/logo_solo_bud.jpg">'
+              html: '<img src="assets/img/logo_solo_bud.jpg" width="50">'
             },
             medium: {
               width: 190,
-              html: '<img src="assets/img/logo.jpg">'
+              html: '<img src="assets/img/logo.jpg" width="190">'
             },
             large: {
               width: 195,
-              html: '<img src="assets/img/logo.jpg">'
+              html: '<img src="assets/img/logo.jpg" width="195">'
             }
           },
           plugins: [

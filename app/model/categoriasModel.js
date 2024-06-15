@@ -20,6 +20,8 @@ Ext.define('Bud.model.categoriasModel', {
     'Ext.data.field.Field'
   ],
 
+  idProperty: 'id_tipo_ingreso_gasto_meta',
+
   fields: [
     {
       name: 'id_tipo_ingreso_gasto_meta'

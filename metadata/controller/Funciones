@@ -30,7 +30,7 @@
                 ],
                 "fn": "showMessg",
                 "implHandler": [
-                    "var titulo = '', task = null;",
+                    "let titulo = '', task = null;",
                     "switch(tipo)",
                     "{",
                     "  case 'INFO':",
@@ -146,16 +146,13 @@
                 "fn": "loadStore",
                 "implHandler": [
                     "const store = Ext.data.StoreManager.lookup(name);",
-                    "const baseUrl = CONFIG.apiUrl + endPoint;",
-                    "const user = CONFIG.user;",
-                    "const pass = CONFIG.pass;",
-                    "const base64Credentials = btoa(user+':'+pass);",
                     "const me = this;",
+                    "const cnx = me.getConnectData(endPoint);",
                     "let params = {usuario: IDUSER};",
                     "",
-                    "store.proxy.setConfig('url', baseUrl);",
+                    "store.proxy.setConfig('url', cnx[0]);",
                     "store.proxy.setConfig('headers', {",
-                    "  'Authorization': 'Basic ' + base64Credentials",
+                    "  'Authorization': 'Basic ' + cnx[1]",
                     "});",
                     "",
                     "if(extraParams)",
@@ -265,46 +262,44 @@
             "codeClass": null,
             "userConfig": {
                 "designer|params": [
+                    "idWin",
                     "idForma",
                     "data",
-                    "idGridRefresca"
+                    "idGrid",
+                    "closeWin"
                 ],
                 "fn": "saveForm",
                 "implHandler": [
                     "const user = CONFIG.user;",
                     "const pass = CONFIG.pass;",
-                    "const base64Credentials = btoa(user+':'+pass);",
                     "const forma = Ext.getCmp(idForma).getForm();",
                     "const me = this;",
+                    "const cnx = me.getConnectData('saveform');",
                     "if(forma.isValid())",
-                    "  Ext.Ajax.request",
-                    "  (",
-                    "    {",
-                    "      url: CONFIG.apiUrl + 'saveform',",
-                    "      method: 'POST',",
-                    "      params: {",
-                    "        usuario: IDUSER,",
-                    "        idForma: idForma,",
-                    "        data: Ext.JSON.encode(data)",
-                    "      },",
-                    "      headers: {",
-                    "        'Authorization': 'Basic ' + base64Credentials",
-                    "      },",
-                    "      callback: function(obj, success, response)",
-                    "      {",
-                    "        let res = Ext.JSON.decode(response.responseText);",
-                    "        if(success)",
-                    "        {",
-                    "          Ext.getCmp(idGridRefresca).getStore().load();",
-                    "        }",
-                    "        else",
-                    "        {",
-                    "          const error = 'Ha ocurrido un error';",
-                    "          me.showMessg('ERROR', error);",
-                    "        }",
+                    "  Ext.Ajax.request({",
+                    "    url: cnx[0],",
+                    "    method: 'POST',",
+                    "    params: {",
+                    "      usuario: IDUSER,",
+                    "      idForma: idForma,",
+                    "      data: Ext.JSON.encode(data)",
+                    "    },",
+                    "    headers: {",
+                    "      'Authorization': 'Basic ' + cnx[1]",
+                    "    },",
+                    "    callback: function(obj, success, response){",
+                    "      let res = Ext.JSON.decode(response.responseText);",
+                    "      if(success){",
+                    "        Ext.getCmp(idGrid).getStore().load();",
+                    "        if(closeWin)",
+                    "          Ext.getCmp(idWin).close();",
+                    "      }",
+                    "      else{",
+                    "        const error = 'Ha ocurrido un error';",
+                    "        me.showMessg('ERROR', error);",
                     "      }",
                     "    }",
-                    "  );"
+                    "  });"
                 ]
             },
             "configAlternates": {
@@ -314,6 +309,113 @@
             },
             "name": "saveForm",
             "designerId": "c4c39d35-963a-435b-90ce-6dd1ac258d4e"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "idGrid",
+                    "colId"
+                ],
+                "fn": "deleteRow",
+                "implHandler": [
+                    "const grid = Ext.getCmp(idGrid);",
+                    "const selection = grid.getSelectionModel().getSelection();",
+                    "const me = this;",
+                    "const cnx = me.getConnectData('deleterow');",
+                    "",
+                    "if (selection.length > 0){",
+                    "  Ext.Msg.show({",
+                    "    title: 'Pregunta',",
+                    "    msg: '¿Realmente desea borrar el/los registro(s) seleccionado(s)',",
+                    "    icon: Ext.Msg.QUESTION,",
+                    "    buttonText: {",
+                    "      yes: 'Si',",
+                    "      no: 'No'",
+                    "    },",
+                    "    buttons: Ext.Msg.YESNO,",
+                    "    fn: function(btn){",
+                    "      if(btn === 'yes'){",
+                    "        let ids = [], k = 0;",
+                    "        for (k = 0; k < selection.length; k++){",
+                    "          ids[k] = selection[k].get(colId);",
+                    "        }",
+                    "        grid.mask();",
+                    "        Ext.Ajax.request({",
+                    "          url: cnx[0],",
+                    "          method: 'POST',",
+                    "          params: {",
+                    "            usuario: IDUSER,",
+                    "            idGrid: idGrid,",
+                    "            data: Ext.JSON.encode(ids)",
+                    "          },",
+                    "          headers: {",
+                    "            'Authorization': 'Basic ' + cnx[1]",
+                    "          },",
+                    "          callback: function(obj, success, response){",
+                    "            let res = Ext.JSON.decode(response.responseText);",
+                    "            if(success){",
+                    "              grid.getStore().load();",
+                    "              me.showMessg('INFO', 'Se borraron ' + res.total + ' registros');",
+                    "            }",
+                    "            else{",
+                    "              const error = 'Ha ocurrido un error';",
+                    "              me.showMessg('ERROR', error);",
+                    "            }",
+                    "            grid.unmask();",
+                    "          }",
+                    "        });",
+                    "",
+                    "      }",
+                    "    }",
+                    "  });",
+                    "}",
+                    "else{",
+                    "  this.showMessg('INFO', 'Seleccione al menos un registro');",
+                    "}"
+                ]
+            },
+            "configAlternates": {
+                "designer|params": "typedarray",
+                "fn": "string",
+                "implHandler": "code"
+            },
+            "name": "deleteRow",
+            "designerId": "60e5edef-2e9d-40b1-a777-b4eaad346bb9"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "endPoint"
+                ],
+                "fn": "getConnectData",
+                "implHandler": [
+                    "const url = CONFIG.apiUrl + endPoint;",
+                    "const user = CONFIG.user;",
+                    "const pass = CONFIG.pass;",
+                    "const base64Credentials = btoa(user+':'+pass);",
+                    "",
+                    "return [url, base64Credentials];"
+                ]
+            },
+            "configAlternates": {
+                "designer|params": "typedarray",
+                "fn": "string",
+                "implHandler": "code"
+            },
+            "name": "getConnectData",
+            "designerId": "c5877e43-7dce-4323-915d-919859e80f58"
         }
     ]
 }

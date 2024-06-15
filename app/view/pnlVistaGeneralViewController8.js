@@ -30,6 +30,10 @@ Ext.define('Bud.view.pnlVistaGeneralViewController8', {
     }
   },
 
+  onBtnEliminarClick: function(button, e, eOpts) {
+    Bud.controller.Funciones.deleteRow('grdCategorias', 'id_tipo_ingreso_gasto_meta');
+  },
+
   onBtnRefrescarClick: function(button, e, eOpts) {
     Ext.getCmp('grdCategorias').getStore().load();
   },
