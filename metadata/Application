@@ -11,6 +11,9 @@
             "usuarioModel"
         ],
         "name": "Bud",
+        "requires": [
+            "Ext.window.Toast"
+        ],
         "stores": [
             "menuStore",
             "categoriasStore",
@@ -28,14 +31,16 @@
             "pnlDetalleMetas",
             "pnlProgreso",
             "pnlCategorias",
-            "winCategorias"
+            "winCategorias",
+            "winRegistro"
         ]
     },
     "configAlternates": {
         "name": "string",
         "stores": "typedarray",
         "views": "typedarray",
-        "models": "typedarray"
+        "models": "typedarray",
+        "requires": "typedarray"
     },
     "name": "Application",
     "designerId": "application",
@@ -51,23 +56,23 @@
                 "fn": "launch",
                 "implHandler": [
                     "const url = window.location.href;",
-                    "let env = '';",
+                    "ENVIRONMENT = '';",
                     "CONFIG = null;",
                     "",
                     "if(url.indexOf('localhost') !== -1)",
-                    "  env = 'dev';",
+                    "  ENVIRONMENT = 'dev';",
                     "else",
                     "{",
                     "  if(url.indexOf('test') !== -1)",
-                    "    env = 'test';",
+                    "    ENVIRONMENT = 'test';",
                     "  else",
-                    "    env = 'prod';",
+                    "    ENVIRONMENT = 'prod';",
                     "}",
                     "",
-                    "if(env !== '')",
+                    "if(ENVIRONMENT !== '')",
                     "{",
                     "  Ext.Ajax.request({",
-                    "    url: 'assets/json/config.' + env + '.json',",
+                    "    url: 'assets/json/config.' + ENVIRONMENT + '.json',",
                     "    success: function(response)",
                     "    {",
                     "      CONFIG = Ext.decode(response.responseText);",

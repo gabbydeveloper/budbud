@@ -42,7 +42,49 @@ Ext.define('Bud.view.winLoginViewController', {
           pwd: Ext.getCmp('txtClave').getValue()
         },
         headers: {
-          'Authorization': 'Basic ' + base64Credentials
+          'Authorization': 'Basic ' + base64Credentials,
+          'Content-Type': 'application/json'
+        },
+        callback: function(obj, success, response)
+        {
+          if(success)
+          {
+            let res = Ext.JSON.decode(response.responseText);
+            IDUSER = res.id_usuario;
+            storage.setItem('token', res.token);
+            Ext.create('Bud.view.vpMain');
+            Ext.getCmp('winLogin').destroy();
+          }
+          else
+          Bud.controller.Funciones.showMessg('INFO', 'Mail o clave incorrectos');
+        }
+      }
+      );
+    }
+  },
+
+  onBtnIngresarClick11: function(button, e, eOpts) {
+    const forma = Ext.getCmp('frmLogin').getForm();
+    const storage = Ext.util.LocalStorage.get('main');
+    const user = CONFIG.user;
+    const pass = CONFIG.pass;
+    const base64Credentials = btoa(user+':'+pass);
+
+
+    if(forma.isValid())
+    {
+      Ext.Ajax.request
+      (
+      {
+        url: CONFIG.apiUrl + 'loginbud',
+        method: 'GET',
+        params: {
+          usr: Ext.getCmp('txtMail').getValue(),
+          pwd: Ext.getCmp('txtClave').getValue()
+        },
+        headers: {
+          'Authorization': 'Basic ' + base64Credentials,
+          'Content-Type': 'application/json'
         },
         callback: function(obj, success, response)
         {

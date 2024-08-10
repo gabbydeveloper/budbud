@@ -41,29 +41,34 @@ Ext.application({
     'pnlDetalleMetas',
     'pnlProgreso',
     'pnlCategorias',
-    'winCategorias'
+    'winCategorias',
+    'winRegistro'
   ],
   name: 'Bud',
 
+  requires: [
+    'Ext.window.Toast'
+  ],
+
   launch: function() {
     const url = window.location.href;
-    let env = '';
+    ENVIRONMENT = '';
     CONFIG = null;
 
     if(url.indexOf('localhost') !== -1)
-      env = 'dev';
+      ENVIRONMENT = 'dev';
     else
     {
       if(url.indexOf('test') !== -1)
-        env = 'test';
+        ENVIRONMENT = 'test';
       else
-        env = 'prod';
+        ENVIRONMENT = 'prod';
     }
 
-    if(env !== '')
+    if(ENVIRONMENT !== '')
     {
       Ext.Ajax.request({
-        url: 'assets/json/config.' + env + '.json',
+        url: 'assets/json/config.' + ENVIRONMENT + '.json',
         success: function(response)
         {
           CONFIG = Ext.decode(response.responseText);

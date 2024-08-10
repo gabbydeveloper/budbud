@@ -3,11 +3,11 @@
     "settings": {
         "cmd": {
             "license": "commercial",
-            "cmdVersion": "7.3.0.19",
+            "cmdVersion": "7.8.0.59",
             "frameworkVersion": "7.3.0.55"
         },
         "urlPrefixTemplate": "http://localhost:{port}/{path}",
-        "urlPrefix": "http://localhost:52854/",
+        "urlPrefix": "http://localhost:50375/",
         "canvasControls": {
             "viewportSize": {
                 "name": "Auto Expand",
@@ -24,7 +24,12 @@
         "cacheBust": false,
         "buildShouldOverwriteIndex": false,
         "generateArchitectVersion": true,
-        "installStatus": "Not Installed"
+        "installStatus": "Not Installed",
+        "lastBuildSelection": {
+            "value": "webBuild",
+            "display": "Build web app",
+            "buildPlatform": false
+        }
     },
     "xdsVersion": "4.2.9",
     "xdsBuild": 443,
@@ -37,8 +42,11 @@
             "7ad8f944-7052-4b8c-a09c-96eabfa782c8",
             "d8a1e663-be98-4ffa-8014-99c4ed415258",
             "4e09dc43-16e9-4d0a-be47-f891e51e2df2",
+            "24dea266-77d8-49b8-b29e-c97694066fa3",
             "e68218e8-9de4-425b-aed5-68191a161fb0",
+            "e209bac3-7029-4fbd-8051-97d18d55f8ef",
             "eec11e9e-5178-46b2-b1e6-de881ac54591",
+            "799c8738-399b-4b1f-a592-c5745662d941",
             "f3d7ec5d-d350-48fd-ade2-cf0e1bb1d6b4",
             "ac554ffd-c8af-4e14-a1b9-2fd87df08ea5",
             "4e85c477-8c4f-4be1-bbf6-16761f6e8962",
@@ -83,7 +91,7 @@
             "9eb45e70-bdde-4226-9737-0e4bf127df50"
         ],
         "resource": [
-            "291ec1d5-c6a8-4a39-91f7-0c317beb173a",
+            "c53eb891-0035-47bd-b541-9caf5029ab07",
             "ac60db15-b88d-480b-ab53-e0f31c7c8011",
             "5e552297-c306-4908-aa0e-519226fadd56",
             "5ce203f0-138b-45d0-b21e-058f7c026128",

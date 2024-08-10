@@ -12,7 +12,7 @@
         "designer|userAlias": "winlogin",
         "designer|userClassName": "winLogin",
         "draggable": false,
-        "height": 249,
+        "height": 235,
         "id": "winLogin",
         "layout": "vbox",
         "modal": true,
@@ -170,6 +170,123 @@
                     "designerId": "18b73d72-3621-486e-8a4c-79808a7a44f7",
                     "cn": [
                         {
+                            "type": "Ext.form.FieldContainer",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "container|align": "stretch",
+                                "layout": "hbox"
+                            },
+                            "configAlternates": {
+                                "container|align": "string",
+                                "layout": "string"
+                            },
+                            "name": "MyFieldContainer",
+                            "designerId": "117b4374-fc2a-4d07-8619-88af83816f78",
+                            "cn": [
+                                {
+                                    "type": "Ext.button.Button",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "layout|flex": 1.8,
+                                        "text": "Ingresar"
+                                    },
+                                    "configAlternates": {
+                                        "text": "string",
+                                        "layout|flex": "number"
+                                    },
+                                    "name": "MyButton2",
+                                    "designerId": "6018e1b3-0cdb-40e1-9c5c-74a631b7de1d",
+                                    "cn": [
+                                        {
+                                            "type": "viewcontrollereventbinding",
+                                            "reference": {
+                                                "name": "listeners",
+                                                "type": "array"
+                                            },
+                                            "codeClass": null,
+                                            "userConfig": {
+                                                "fn": "onBtnIngresarClick",
+                                                "implHandler": [
+                                                    "const forma = Ext.getCmp('frmLogin').getForm();",
+                                                    "const storage = Ext.util.LocalStorage.get('main');",
+                                                    "const user = CONFIG.user;",
+                                                    "const pass = CONFIG.pass;",
+                                                    "const base64Credentials = btoa(user+':'+pass);",
+                                                    "",
+                                                    "",
+                                                    "if(forma.isValid())",
+                                                    "{",
+                                                    "  Ext.Ajax.request",
+                                                    "  (",
+                                                    "    {",
+                                                    "      url: CONFIG.apiUrl + 'loginbud',",
+                                                    "      method: 'GET',",
+                                                    "      params: {",
+                                                    "        usr: Ext.getCmp('txtMail').getValue(),",
+                                                    "        pwd: Ext.getCmp('txtClave').getValue()",
+                                                    "      },",
+                                                    "      headers: {",
+                                                    "        'Authorization': 'Basic ' + base64Credentials,",
+                                                    "        'Content-Type': 'application/json'",
+                                                    "      },",
+                                                    "      callback: function(obj, success, response)",
+                                                    "      {",
+                                                    "        if(success)",
+                                                    "        {",
+                                                    "          let res = Ext.JSON.decode(response.responseText);",
+                                                    "          IDUSER = res.id_usuario;",
+                                                    "          storage.setItem('token', res.token);",
+                                                    "          Ext.create('Bud.view.vpMain');",
+                                                    "          Ext.getCmp('winLogin').destroy();",
+                                                    "        }",
+                                                    "        else",
+                                                    "          Bud.controller.Funciones.showMessg('INFO', 'Mail o clave incorrectos');",
+                                                    "      }",
+                                                    "    }",
+                                                    "  );",
+                                                    "}"
+                                                ],
+                                                "name": "click",
+                                                "scope": "me"
+                                            },
+                                            "configAlternates": {
+                                                "fn": "string",
+                                                "implHandler": "code",
+                                                "name": "string",
+                                                "scope": "string"
+                                            },
+                                            "name": "onBtnIngresarClick",
+                                            "designerId": "4f66de4a-a5ca-4b57-91ea-d1991e377a17"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "Ext.button.Button",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "text": "Resetear clave"
+                                    },
+                                    "configAlternates": {
+                                        "text": "string"
+                                    },
+                                    "name": "MyButton3",
+                                    "designerId": "6f894ae0-dfa7-4ccd-a35f-e61efe66ce57"
+                                }
+                            ]
+                        },
+                        {
                             "type": "Ext.button.Button",
                             "reference": {
                                 "name": "items",
@@ -177,13 +294,15 @@
                             },
                             "codeClass": null,
                             "userConfig": {
-                                "text": "Ingresar"
+                                "margin": "5 0 0 0 ",
+                                "text": "Registrarse"
                             },
                             "configAlternates": {
-                                "text": "string"
+                                "text": "string",
+                                "margin": "auto"
                             },
-                            "name": "MyButton2",
-                            "designerId": "6018e1b3-0cdb-40e1-9c5c-74a631b7de1d",
+                            "name": "MyButton1",
+                            "designerId": "51f37710-fecc-4bf6-a9b3-7cb534c8a535",
                             "cn": [
                                 {
                                     "type": "viewcontrollereventbinding",
@@ -193,7 +312,7 @@
                                     },
                                     "codeClass": null,
                                     "userConfig": {
-                                        "fn": "onBtnIngresarClick",
+                                        "fn": "onBtnIngresarClick11",
                                         "implHandler": [
                                             "const forma = Ext.getCmp('frmLogin').getForm();",
                                             "const storage = Ext.util.LocalStorage.get('main');",
@@ -214,7 +333,8 @@
                                             "        pwd: Ext.getCmp('txtClave').getValue()",
                                             "      },",
                                             "      headers: {",
-                                            "        'Authorization': 'Basic ' + base64Credentials",
+                                            "        'Authorization': 'Basic ' + base64Credentials,",
+                                            "        'Content-Type': 'application/json'",
                                             "      },",
                                             "      callback: function(obj, success, response)",
                                             "      {",
@@ -242,8 +362,8 @@
                                         "name": "string",
                                         "scope": "string"
                                     },
-                                    "name": "onBtnIngresarClick",
-                                    "designerId": "4f66de4a-a5ca-4b57-91ea-d1991e377a17"
+                                    "name": "onBtnIngresarClick11",
+                                    "designerId": "b0758644-7cc5-4f71-b8d5-2570391b6ed8"
                                 }
                             ]
                         }

@@ -22,6 +22,7 @@ Ext.define('Bud.view.winLogin', {
     'Bud.view.winLoginViewController',
     'Ext.form.Panel',
     'Ext.form.field.Text',
+    'Ext.form.FieldContainer',
     'Ext.button.Button'
   ],
 
@@ -32,7 +33,7 @@ Ext.define('Bud.view.winLogin', {
   modal: true,
   autoShow: true,
   draggable: false,
-  height: 249,
+  height: 235,
   id: 'winLogin',
   resizable: false,
   width: 358,
@@ -79,10 +80,32 @@ Ext.define('Bud.view.winLogin', {
           layout: 'fit',
           items: [
             {
+              xtype: 'fieldcontainer',
+              layout: {
+                type: 'hbox',
+                align: 'stretch'
+              },
+              items: [
+                {
+                  xtype: 'button',
+                  flex: 1.8,
+                  text: 'Ingresar',
+                  listeners: {
+                    click: 'onBtnIngresarClick'
+                  }
+                },
+                {
+                  xtype: 'button',
+                  text: 'Resetear clave'
+                }
+              ]
+            },
+            {
               xtype: 'button',
-              text: 'Ingresar',
+              margin: '5 0 0 0 ',
+              text: 'Registrarse',
               listeners: {
-                click: 'onBtnIngresarClick'
+                click: 'onBtnIngresarClick11'
               }
             }
           ]

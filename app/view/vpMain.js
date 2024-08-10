@@ -55,7 +55,7 @@ Ext.define('Bud.view.vpMain', {
           xtype: 'component',
           cls: 'txtCabecera',
           dock: 'top',
-          id: 'cmpHeader',
+          id: 'cmpHeaderBud',
           style: 'background-color: #005d8e;',
           width: 195,
           responsiveConfig: {

@@ -1,0 +1,18 @@
+{
+    "type": "Ext.app.ViewModel",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userAlias": "winregistro",
+        "designer|userClassName": "winRegistroViewModel"
+    },
+    "configAlternates": {
+        "designer|userAlias": "string",
+        "designer|userClassName": "string"
+    },
+    "name": "winLoginViewModel1",
+    "designerId": "e209bac3-7029-4fbd-8051-97d18d55f8ef"
+}
